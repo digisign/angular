@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="assets/images/digisign logo 2.png" style="width:100px">
+      
+      
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+  </nav>
+<body>
+<div style="background-color:rgba(236, 229, 219, 0.87);width:100%;height:100%">
+<h5 style="font-size:14px;">Please Upload Your's Certificates and documents Images.</h5>
+
+  {{UserFile}}
+
+
+<div class="character">
+  <img src="assets/images/character.png" style="width:120px;height:150px;">
+</div>
+<div class="myform">
+  <span class="" style="margin-left:120px;"><img src="assets/images/upload icon.png"></span><br>
+<form [formGroup]="UserForm" id="UserForm" (ngSubmit)="onSubmit(UserForm.value)">
+  <div class="fileUpload btn btn-primary">
+    <span>Upload</span>
+    <input type="file" class="upload" />
+</div>
+  
+</form>
+</div>
+</div></body>

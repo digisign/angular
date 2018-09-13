@@ -1,0 +1,30 @@
+
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <div class="row">
+<div class="col-md-12">
+     <div class="col-md-3" ><span class="img">
+<img src="assets/images/digisign_logo.png" style="width:40px"></span><br><br><br><br><br><br><br>
+
+<p>REGISTER</p><br><br><!--
+<div>
+  <select  (click)="goPlaces()"  id="select" class="myselect">
+    <option >Chose your role</option>
+    <option >
+    I want to get my credentials verified</option>
+  </select>
+ </div>-->
+ <a [routerLink]="['/register']"><button class="student-btn" [ngClass]="{'active': activeBtn === 'b1'}"  (click)="myFunction('b1')"><span class="text1">I am a Student</span></button><br><br></a>
+ <button class="student-btn" [ngClass]="{'active': activeBtn === 'b2'}" (click)="myFunction('b2')"><span class="text1">I am a Institution</span></button><br><br>
+ <button class="student-btn" [ngClass]="{'active': activeBtn === 'b3'}" (click)="myFunction('b3')"><span class="text1">I am a Requester</span></button>
+ </div> 
+   
+     <div  class="col-md-8" >
+          
+<img src="assets/images/Artboard.png"  class="img-rounded"style="width:800px;height:auto;margin-left:200px;">
+     </div>
+    </div></div>
+ 
+
+  

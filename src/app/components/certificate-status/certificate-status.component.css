@@ -1,0 +1,101 @@
+.action-wrap {
+  width: 400px;
+  height: 187px;
+  border-radius: 8px;
+
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
+}
+
+.action-pending {
+  background-color: #17c4fa;
+}
+
+.action-cenrtify {
+  background-color: #57d68d;
+}
+
+.action-wrap h4 {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.action-wrap-count {
+  font-family: LucidaGrande;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.action-count {
+  font-size: 86px;
+}
+
+.action-total {
+  font-size: 40px;
+}
+
+.action-wrap-icon {
+  align-items: center;
+  color: #ffffff;
+  font-size: 50px;
+}
+
+.new-upload {
+  width: calc(100% - 860px);
+  height: 187px;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  border: solid 1px #e3e3e3;
+}
+
+.new-upload-subtitel {
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: 500;
+  color: #195bdd;
+}
+
+.upload-btn-wrap {
+  background-color: #195bdd;
+  border-radius: 15px;
+  height: 30px;
+  width: 174px;
+}
+
+.upload-btn-wrap .upload-btn-text {
+  color: #ffffff;
+  font-family: LucidaGrande;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.upload-btn-wrap .upload-btn {
+  position: absolute;
+  opacity: 0;
+}
+
+.certificates-list-wrap {
+  min-height: calc(100% - 305px);
+}
+
+.footer-wrap {
+  height: 88px;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 11px 0 rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.share-button {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  color: #ffffff;
+  height: 46.9px;
+  border-radius: 55px;
+  background-color: #d43d6d;
+}

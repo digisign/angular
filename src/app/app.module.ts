@@ -19,6 +19,8 @@ import { FilepdfComponent } from './components/filepdf/filepdf.component';
 import {MyFileUpload}  from './components/newfileupload/myfileupload.component';
 import { CredentialsviewsComponent } from './components/credentialsviews/credentialsviews.component';
 import { FilesComponent } from './components/files/files.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
+import { CertificateStatusComponent } from './components/certificate-status/certificate-status.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FilesComponent } from './components/files/files.component';
     FilepdfComponent,
     FileSelectDirective,
     CredentialsviewsComponent,
-    FilesComponent
+    FilesComponent,
+    UploadDetailsComponent,
+    CertificateStatusComponent
   ],
   imports: [
     BrowserModule,

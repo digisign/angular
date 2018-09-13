@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+a:hover{
+    text-decoration:none;
+}
+@font-face{
+    font-family:"Roboto-Regular";
+    src: url("./assets/fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Black";
+    src: url("./assets/fonts/Roboto-Black.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Thin";
+    src: url("./assets/fonts/Roboto-Thin.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-BlackItalic";
+    src: url("./assets/fonts/Roboto-BlackItalic.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Bold";
+    src: url("./assets/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Italic";
+    src: url("./assets/fonts/Roboto-Italic.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Light-Regular";
+    src: url("./assets/fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-LightItalic";
+    src: url("./assets/fonts/Roboto-LightItalic.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-Medium";
+    src: url("./assets/fonts/Roboto-Medium.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-MediumItalic";
+    src: url("./assets/fonts/Roboto-MediumItalic.ttf") format("truetype");
+}
+@font-face{
+    font-family:"Roboto-ThinItalic";
+    src: url("./assets/fonts/Roboto-ThinItalic.ttf") format("truetype");
+}

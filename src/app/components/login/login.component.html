@@ -12,7 +12,7 @@
 
       <div class="d-flex justify-content-between social">
         <button class="btn socialmedia"><i class="fa fa-facebook-square"></i><span class="pl-2">Facebook</span></button>
-        <button class="btn socialmedia1"><i class="fa fa-twitter"><span class="pl-2">Twitter</span></i></button>
+        <button class="btn socialmedia1"><i class="fa fa-twitter"></i><span class="pl-2">Twitter</span></button>
         <button class="btn socialmedia2">google+</button>
       </div>
 
@@ -26,13 +26,13 @@
           <h6 style="color:red">{{errorMessage}}</h6>
         </div>
         <span id="reauth-email" class="reauth-email"></span>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
           <label for="email" class="label1">Username</label><br>
           <input type="email" placeholder="Login" class="form-control" id="email" name="email" pattern="[^ @]*@[^ @]*"
             [(ngModel)]="user.email" #email="ngModel" required />
           <div *ngIf="f.submitted && !email.valid" class="help-block" style="color:red"> Valid email is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
           <label for="password" class="label1">Password</label><br>
           <input type="password" placeholder="Minimum 7 characters" class="form-control" id="password" name="password"
             [(ngModel)]="user.password" #password="ngModel" required />
@@ -42,10 +42,11 @@
 
         </div>
         <button class="signinbtn" type="submit">SIGN IN</button>
-
-        <a [routerLink]="['/register']" class="btnregister ">
-          <h6 class="donothave">Don't have an account? <!-- &nbsp;&nbsp;&nbsp; --><span class="register ml-3">REGISTER</span></h6>
-        </a>
+        <div class="text-center py-5">
+          <a [routerLink]="['/register']" class="btnregister ">
+            <span class="donothave">Don't have an account? <!-- &nbsp;&nbsp;&nbsp; --><span class="register ml-3">REGISTER</span></span>
+          </a>
+        </div>
       </form>
     </div>
   </div>

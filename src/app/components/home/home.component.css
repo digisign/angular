@@ -13,7 +13,7 @@
 } */
 .page-titel {
   color: #195add;
-  font-family: Helvetica;
+  font-family: Roboto-Regular;
   font-size: 24px;
   font-weight: bold;
 }
@@ -32,29 +32,36 @@
 }
 
 .student-btn {
-  width: 300px;
+  /* width: 300px;
   height: 35px;
   border-radius: 10px;
-  /* margin-left: 35px; */
+  margin-left: 35px;
   padding: 0px;
-  background-color: whitesmoke;
+  background-color: whitesmoke; */
   padding: 2px;
   border-radius: 16px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
   border: solid 1px #e3e3e3;
+  font-family: Roboto-Regular;
+  font-size: 24px;
+  color: #283d4a;
+  text-align: left;
+  padding-left: 40px;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 button.student-btn:focus {
   outline: none;
 }
 
-.text1 {
+/* .text1 {
   margin-left: -135px;
   font-size: 16px;
   font-weight: bold;
 
-}
+} */
 
 .option {
   margin-left: 35px;

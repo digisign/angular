@@ -15,11 +15,11 @@
   justify-content: center;
 }
 
-h3 {
+.register-page-titel {
 
-  width: 185px;
-  height: 43px;
-  font-family: Helvetica;
+  /* width: 185px;
+  height: 43px; */
+  font-family: Roboto-Regular;
   font-size: 36px;
   font-weight: bold;
   font-style: normal;
@@ -30,19 +30,34 @@ h3 {
 }
 
 .student_btn {
-  background-color: rgb(216, 59, 145);
-  margin-left: 20px;
+  /* background-color: rgb(216, 59, 145);
   border-radius: 5px;
   color: white;
   font-size: 10px;
   width: 150px;
-  height: 25px;
+  height: 25px; */
+  margin-left: 20px;
   border: 0px;
-
+  width: 200px;
+  height: 30px;
+  border-radius: 3px;
+  background-color: #d43d6d;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #ffffff;
 }
 
 .labletext {
-  font-size: 12px;
+  /* font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #5e6875; */
+  font-family: Roboto-Regular;
+  font-size: 14px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -81,12 +96,24 @@ h6 {
   width: 335px;
   height: 40px;
   border: solid 2px #d4dee7;
+  font-family: Roboto-Regular;
+  font-size: 16px;
+  color: #283d4a;
 }
-
+.iagree {
+  font-family: Roboto-Regular;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #787878;
+}
 .iagreecmd {
   width: 283px;
   height: 19px;
-  font-family: Helvetica;
+  font-family: Roboto-Regular;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -108,12 +135,17 @@ h6 {
   color: #005cc7;
 
 }
-
+.already-account {
+  font-family: Roboto-Regular;
+  font-size: 12px;
+  font-weight: 300;
+  color: #5e6875;
+}
 .btn-register {
   width: 281.2px;
   height: 46.9px;
   border-radius: 55px;
-  background-color: #195bdd;
+  background-color: #bdbdbd;
   border: 0px;
   margin-left: 25px;
   margin: 15px;
@@ -128,6 +160,10 @@ h6 {
   align-items: center;
   justify-content: center;
 
+}
+
+.btn-register.valid {
+  background-color: #195bdd;
 }
 
 .register1 {
@@ -170,7 +206,7 @@ h4 {
 .register {
   width: 90px;
   height: 35px;
-  font-family: Helvetica;
+  font-family: Roboto-Regular;
   font-size: 28px;
   font-weight: bold;
   font-style: normal;
@@ -185,6 +221,8 @@ h4 {
 .social .btn {
   width: 100px;
   font-size: 14px;
+  display: block;
+  font-family: Roboto-Regular;
 }
 
 .socialmedia {
@@ -262,6 +300,7 @@ h2 {
   text-decoration: none;
   margin-left: 30px;
 }
+
 .register-box {
   padding-left: 5%;
   width: 414px;
@@ -274,6 +313,7 @@ h2 {
   background-repeat: no-repeat;
   width: calc(100% - 414px);
 }
+
 .or-line:after {
   content: '';
 
@@ -284,6 +324,7 @@ h2 {
 
   border-width: 0 0 1px;
   border-style: solid;
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
 .or-line-text {
@@ -292,4 +333,20 @@ h2 {
   z-index: 9;
   padding: 0 10px;
   font-size: 12px;
+}
+
+.social-media-title {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #8c8c8c;
+}
+.back-button {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #787878;
 }

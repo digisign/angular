@@ -1,21 +1,22 @@
-
-
-.row{
+.row {
   margin-left: 45px;
 
 }
-.registration-wrapper{
-  font-family:Roboto-Regular;
+
+.registration-wrapper {
+  font-family: Roboto-Regular;
 }
-.logo{
+
+.logo {
   display: flex;
   width: 70px;
   height: 164px;
   align-items: center;
   justify-content: center;
 }
-h3{
-  
+
+h3 {
+
   width: 185px;
   height: 43px;
   font-family: Helvetica;
@@ -27,18 +28,20 @@ h3{
   letter-spacing: normal;
   color: #195add;
 }
-.student_btn{
-  background-color:rgb(216, 59, 145);
-  margin-left:20px;
+
+.student_btn {
+  background-color: rgb(216, 59, 145);
+  margin-left: 20px;
   border-radius: 5px;
-  color:white;
-  font-size:10px;
-  width:150px;
-  height:25px;
+  color: white;
+  font-size: 10px;
+  width: 150px;
+  height: 25px;
   border: 0px;
 
 }
-.labletext{
+
+.labletext {
   font-size: 12px;
   font-weight: normal;
   font-style: normal;
@@ -47,13 +50,14 @@ h3{
   letter-spacing: normal;
   color: #5e6875;
 }
-p{
-  margin-left:60px;
- 
+
+p {
+  margin-left: 60px;
+
 }
 
 .btn {
-  margin-left:20px;
+  /* margin-left: 20px; */
   font-weight: 700;
   height: 36px;
   -moz-user-select: none;
@@ -62,8 +66,8 @@ p{
   cursor: default;
 }
 
-h6{
-  
+h6 {
+
   font-size: 10px;
   font-weight: normal;
   font-style: normal;
@@ -72,12 +76,14 @@ h6{
   letter-spacing: normal;
   color: #8c8c8c;
 }
-.form-control{
+
+.form-control {
   width: 335px;
   height: 40px;
   border: solid 2px #d4dee7;
 }
-.iagreecmd{
+
+.iagreecmd {
   width: 283px;
   height: 19px;
   font-family: Helvetica;
@@ -89,25 +95,28 @@ h6{
   letter-spacing: normal;
   color: #5e6875
 }
-.checkbox1{
+
+.checkbox1 {
   width: 20px;
   height: 25px;
   border-radius: 2px;
   background-color: #ffffff;
   border: solid 1px #d4dee7
 }
-.termcondition{
+
+.termcondition {
   color: #005cc7;
 
 }
-.btn-register{
+
+.btn-register {
   width: 281.2px;
   height: 46.9px;
   border-radius: 55px;
   background-color: #195bdd;
-  border:0px;
+  border: 0px;
   margin-left: 25px;
-  margin:15px;
+  margin: 15px;
   display: flex;
   font-size: 12px;
   font-weight: normal;
@@ -120,7 +129,8 @@ h6{
   justify-content: center;
 
 }
-.register1{
+
+.register1 {
   width: 55px;
   height: 14px;
   font-size: 12px;
@@ -131,20 +141,22 @@ h6{
   letter-spacing: 0px;
   color: #ffffff;
 }
-h4{
-  font-size:12px;
-  
-  
+
+h4 {
+  font-size: 12px;
+
+
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   color: #5e6875;
-  margin-left:30px;
-  margin:40px;
+  margin-left: 30px;
+  margin: 40px;
 }
-.signin{
-  
+
+.signin {
+
   font-size: 12px;
   font-weight: normal;
   font-style: normal;
@@ -155,7 +167,7 @@ h4{
 }
 
 
-.register{
+.register {
   width: 90px;
   height: 35px;
   font-family: Helvetica;
@@ -166,20 +178,25 @@ h4{
   line-height: normal;
   letter-spacing: normal;
   color: #195add;
-  margin-left:35px;
+  margin-left: 35px;
 
 }
 
-.socialmedia{
-  width: 98px;
+.social .btn {
+  width: 100px;
+  font-size: 14px;
+}
+
+.socialmedia {
+  /* width: 98px; */
   height: 29.7px;
   background-color: #225498;
   border-radius: 25px;
   border: 0px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 10px;
   font-weight: normal;
   font-style: normal;
@@ -188,18 +205,19 @@ h4{
   letter-spacing: normal;
   color: #ffffff;
 }
-.socialmedia1{
-  width: 98px;
+
+.socialmedia1 {
+  /* width: 98px; */
   height: 29.7px;
   background-color: #1da0f1;
   border-radius: 25px;
   border: 0px;
-  
-  display:flex;
+
+  display: flex;
   align-items: center;
   justify-content: center;
- 
-  font-family: Roboto;
+
+  font-family: Roboto-Regular;
   font-size: 10px;
   font-weight: normal;
   font-style: normal;
@@ -208,17 +226,18 @@ h4{
   letter-spacing: normal;
   color: #ffffff;
 }
-.socialmedia2{
-  width: 98px;
+
+.socialmedia2 {
+  /* width: 98px; */
   height: 29.7px;
   background-color: #dd4b38;
   border-radius: 25px;
   border: 0px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  
-  font-family: Roboto;
+
+  font-family: Roboto-Regular;
   font-size: 10px;
   font-weight: normal;
   font-style: normal;
@@ -226,19 +245,51 @@ h4{
   line-height: normal;
   letter-spacing: normal;
   color: #ffffff;
-}
-h2{
-  
-  font-size: 10px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #ffffff;
-}
-.btnlogin{
-  text-decoration: none;
-  margin-left:30px;
 }
 
+h2 {
+
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.btnlogin {
+  text-decoration: none;
+  margin-left: 30px;
+}
+.register-box {
+  padding-left: 5%;
+  width: 414px;
+}
+
+.register-label-img {
+  background: url(../../../assets/images/Artboard.png);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+  width: calc(100% - 414px);
+}
+.or-line:after {
+  content: '';
+
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  border-width: 0 0 1px;
+  border-style: solid;
+}
+
+.or-line-text {
+  background-color: #fff;
+  font-family: Roboto-Regular;
+  z-index: 9;
+  padding: 0 10px;
+  font-size: 12px;
+}

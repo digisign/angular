@@ -1,49 +1,59 @@
-
-
-
-   <div class="row login-wrapper">
-     <div class="col-md-12">
-       <div class="col-md-3">      
-<div class="div1" >
-    <div class="logo" >
+<div class="d-flex h-100">
+<!-- <div class="row login-wrapper"> -->
+  <!-- <div class="col-md-12"> -->
+  <div class="col-auto register-box"><!-- col-md-3 -->
+    <div class="div1">
+      <div class="d-inline-block py-5 pr-4 text-center logo">
         <img src="assets/images/digisign_logo.png">
       </div>
 
-    <h3>Sign In</h3><h6>Login with social media</h6>
-    
-    <div class="social" >
-      <button class="socialmedia"><i class="fa fa-facebook-square">Facebook</i></button>
-      <button class="socialmedia1" style="font-size:8px;"><i class="fa fa-twitter">Twitter</i></button>
-      <button class="socialmedia2" style="font-size:8px;">google+</button>
+      <h3 class="mb-5">Sign In</h3>
+      <h6 class="my-4">Login with social media</h6>
+
+      <div class="d-flex justify-content-between social">
+        <button class="btn socialmedia"><i class="fa fa-facebook-square"></i><span class="pl-2">Facebook</span></button>
+        <button class="btn socialmedia1"><i class="fa fa-twitter"><span class="pl-2">Twitter</span></i></button>
+        <button class="btn socialmedia2">google+</button>
+      </div>
+
+      <div class="w-100 p-4 btn-group justify-content-center or-line">
+        <span class="d-inline-block or-line-text">or</span>
+      </div>
+
+      <form name="form-signin" (ngSubmit)="f.form.valid && login($event, email.value, password.value)" #f="ngForm"
+        novalidate>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          <h6 style="color:red">{{errorMessage}}</h6>
+        </div>
+        <span id="reauth-email" class="reauth-email"></span>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+          <label for="email" class="label1">Username</label><br>
+          <input type="email" placeholder="Login" class="form-control" id="email" name="email" pattern="[^ @]*@[^ @]*"
+            [(ngModel)]="user.email" #email="ngModel" required />
+          <div *ngIf="f.submitted && !email.valid" class="help-block" style="color:red"> Valid email is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label for="password" class="label1">Password</label><br>
+          <input type="password" placeholder="Minimum 7 characters" class="form-control" id="password" name="password"
+            [(ngModel)]="user.password" #password="ngModel" required />
+          <div *ngIf="f.submitted && !password.valid" class="help-block" style="color:red">Password is required</div>
+        </div>
+        <div id="remember" class="checkbox">
+
+        </div>
+        <button class="signinbtn" type="submit">SIGN IN</button>
+
+        <a [routerLink]="['/register']" class="btnregister ">
+          <h6 class="donothave">Don't have an account? <!-- &nbsp;&nbsp;&nbsp; --><span class="register ml-3">REGISTER</span></h6>
+        </a>
+      </form>
+    </div>
   </div>
-  
-  <p>____________or___________</p>
+  <div class="col-auto pr-0 register-label-img">
+      <!-- col-md-8 p-0 -->
 
-      <form name="form-signin" (ngSubmit)="f.form.valid && login($event, email.value, password.value)" #f="ngForm" novalidate>
-        <div class="alert alert-danger" role="alert" *ngIf="errorMessage"><h6 style="color:red">{{errorMessage}}</h6></div>
-      <span id="reauth-email" class="reauth-email"></span>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-        <label for="email" class="label1" >Username</label><br>
-        <input type="email" placeholder="Login"class="form-control" id="email" name="email" pattern="[^ @]*@[^ @]*" [(ngModel)]="user.email" #email="ngModel" required />
-        <div *ngIf="f.submitted && !email.valid" class="help-block" style="color:red"> Valid email is required</div>
-      </div>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-        <label for="password" class="label1">Password</label><br>
-        <input type="password"placeholder="Minimum 7 characters" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required />
-        <div *ngIf="f.submitted && !password.valid" class="help-block" style="color:red">Password is required</div>
-      </div>
-      <div id="remember" class="checkbox">
 
-      </div>
-      <button class="signinbtn" type="submit">SIGN IN</button>
-    
-      <a [routerLink]="['/register']" class="btnregister "><h6 class="donothave">Don't have an account? &nbsp;&nbsp;&nbsp;<span class="register">REGISTER</span></h6></a>
-    </form>
+    <!-- <img src="assets/images/Artboard.png" class="img-rounded" style="width:800px;height:auto;margin-left:200px;"> -->
+  </div>
+  <!-- </div> -->
 </div>
-</div> 
-<div class="col-md-8">
-
-
-<img src="assets/images/Artboard.png" class="img-rounded" style="width:800px;height:auto;margin-left:200px;">
-</div>
-</div></div>

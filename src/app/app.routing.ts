@@ -16,9 +16,9 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'fileupload', component: FileuplodComponent },
-  { path: 'files', component: FilesComponent },
+  /*{  path: 'files', component: FilesComponent },
   { path: 'pdf', component: FilepdfComponent },
-  { path: 'myfileupload', component: MyFileUpload },
+  { path: 'myfileupload', component: MyFileUpload }, */
   { path: 'Credentialsviews', component: CredentialsviewsComponent },
   { path: 'UploadDetails', component: UploadDetailsComponent },
   { path: 'CertificateStatus', component: CertificateStatusComponent },

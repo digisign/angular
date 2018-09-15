@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {User} from "../../model/model.user";
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
-import { HttpErrorResponse } from '@angular/common/http';
+import { User } from "../../model/model.user";
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 import { Http } from '@angular/http';
-import { contentHeaders } from '../../components/headers';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
         console.log('Successfull' + data);
         this.router.navigate(['/profile']);
         },err=>{
-          console.log(err);
-        this.errorMessage="error :  Username or password is incorrect";
+        this.errorMessage="Enter Valide Username or password";
         }
       )
   }

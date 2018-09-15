@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Digital Credentials';
-  static API_URL="http://localhost:8080";
+  /* static API_URL="http://localhost:8080"; */
 }

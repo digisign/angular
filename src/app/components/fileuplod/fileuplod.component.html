@@ -3,8 +3,8 @@
   <img src="assets/images/digisign logo 2.png" style="width:100px">
 
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -22,8 +22,8 @@
     <br>
     <form [formGroup]="UserForm" id="UserForm" (ngSubmit)="onSubmit(UserForm.value)">
       <div class="input-group align-items-center justify-content-center upload-btn-wrap">
-        <span class="d-inline-block text-center upload-btn-text">Upload</span>
-        <input type="file" class="upload upload-btn h-100 w-100" />
+        <span class="d-inline-block text-center upload-btn-text">Choose File</span>
+        <input type="file" class="upload upload-btn h-100 w-100" (change)="selectFile($event)" />
       </div>
     </form>
   </div>

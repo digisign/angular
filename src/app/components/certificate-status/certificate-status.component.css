@@ -78,9 +78,12 @@
   opacity: 0;
 }
 
+.certificate-status-wrap {
+  min-height: calc(100% - 80px);
+}
+
 .certificates-list-wrap {
-  min-height: calc(100% - 305px);
-  overflow: auto;
+  min-height: calc(100% - 215px);
 }
 
 .certificate-wrap {
@@ -131,4 +134,42 @@
 
 .share-button-text {
   flex: auto;
+}
+
+.logo-wrap {
+  width: 180px;
+}
+
+.notification-wrap {
+  width: calc(100% - 190px);
+}
+
+.notification-wrap .notification-icon {
+  color: #afb5c4;
+  font-size: 30px;
+  position: relative;
+}
+
+.notification-wrap .notification-icon .notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #25cdda;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.user-icon {
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #979797;
 }

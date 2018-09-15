@@ -1,4 +1,6 @@
-.upload-details-wrap {}
+.upload-details-wrap {
+  font-family: Roboto-Regular;
+}
 
 .upload-details-container {
   width: 908.1px;
@@ -7,7 +9,7 @@
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   border: solid 1px #e3e3e3;
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 14px;
 }
 
@@ -17,7 +19,7 @@
 }
 
 .content-title {
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 18px;
   font-weight: bold;
   font-style: normal;
@@ -36,7 +38,7 @@
   border-radius: 55px;
   background-color: #bdbdbd;
   width: 282px;
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 14px;
   font-weight: normal;
   color: #ffffff;

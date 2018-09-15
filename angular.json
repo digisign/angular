@@ -24,7 +24,9 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "./src/assets/font-icons/line-awesome.min.css",
+              "./src/assets/font-icons/line-awesome-font-awesome.min.css",
+              "./src/styles.css"
             ],
             "scripts": []
           },

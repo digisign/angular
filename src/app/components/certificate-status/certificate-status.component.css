@@ -15,14 +15,14 @@
 }
 
 .action-wrap h4 {
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 18px;
   font-weight: bold;
   color: #ffffff;
 }
 
 .action-wrap-count {
-  font-family: LucidaGrande;
+  font-family: Roboto-Regular;
   font-weight: normal;
   color: #ffffff;
 }
@@ -52,7 +52,7 @@
 }
 
 .new-upload-subtitel {
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 22px;
   font-weight: 500;
   color: #195bdd;
@@ -67,7 +67,7 @@
 
 .upload-btn-wrap .upload-btn-text {
   color: #ffffff;
-  font-family: LucidaGrande;
+  font-family: Roboto-Regular;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -78,8 +78,39 @@
   opacity: 0;
 }
 
+.certificate-status-wrap {
+  min-height: calc(100% - 80px);
+}
+
 .certificates-list-wrap {
-  min-height: calc(100% - 305px);
+  min-height: calc(100% - 215px);
+}
+
+.certificate-wrap {
+  width: 295px;
+  height: 445px;
+  border-radius: 4px;
+  box-shadow: 0 6px 36px 0 rgba(0, 62, 100, 0.12);
+  background-color: #ffffff;
+  border: solid 1px #e5edf3;
+}
+
+.certificate-wrap-header {
+  border-bottom: solid 1px rgba(151, 151, 151, 0.2);
+}
+
+.certificate-mark {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  font-weight: 600;
+  color: #9fa9ba;
+}
+
+.certificate-status {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  font-weight: 600;
+  color: #00b12e;
 }
 
 .footer-wrap {
@@ -91,11 +122,54 @@
 }
 
 .share-button {
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 14px;
   font-weight: normal;
   color: #ffffff;
   height: 46.9px;
   border-radius: 55px;
   background-color: #d43d6d;
+  width: 280px;
+}
+
+.share-button-text {
+  flex: auto;
+}
+
+.logo-wrap {
+  width: 180px;
+}
+
+.notification-wrap {
+  width: calc(100% - 190px);
+}
+
+.notification-wrap .notification-icon {
+  color: #afb5c4;
+  font-size: 30px;
+  position: relative;
+}
+
+.notification-wrap .notification-icon .notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #25cdda;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.user-icon {
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #979797;
 }

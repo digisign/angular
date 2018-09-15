@@ -4,8 +4,8 @@
 }
 
 .page-title {
-  font-family: LucidaGrande;
-  font-size: 20px;
+  font-family: Roboto-Regular;
+  font-size: 24px;
 }
 
 .character-img-wrap {
@@ -23,6 +23,13 @@
   width: 455px;
 }
 
+.drop-upload {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+}
+
 .upload-btn-wrap {
   background-color: #195bdd;
   border-radius: 15px;
@@ -32,7 +39,7 @@
 
 .upload-btn-wrap .upload-btn-text {
   color: #ffffff;
-  font-family: LucidaGrande;
+  font-family: Roboto-Regular;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;

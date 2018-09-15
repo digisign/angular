@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .user-details {
   min-width: 50%;
   max-width: 100%;
@@ -10,6 +11,10 @@
 
 .autocomplete-dropdown {
   width: 100%;
+=======
+.upload-details-wrap {
+  font-family: Roboto-Regular;
+>>>>>>> a78e81a5404cb7d8eab2b85d208d166a29f16c3c
 }
 
 .upload-details-container {
@@ -19,7 +24,7 @@
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   border: solid 1px #e3e3e3;
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 14px;
 }
 
@@ -29,7 +34,7 @@
 }
 
 .content-title {
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 18px;
   font-weight: bold;
   font-style: normal;
@@ -48,7 +53,7 @@
   border-radius: 55px;
   background-color: #bdbdbd;
   width: 282px;
-  font-family: Roboto;
+  font-family: Roboto-Regular;
   font-size: 14px;
   font-weight: normal;
   color: #ffffff;

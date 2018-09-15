@@ -1,63 +1,126 @@
 <div class="h-100">
-  <div class="row m-0 p-4">
-    <div class="p-3 action-wrap action-pending float-left">
-      <div class="">
-        <h4 class="text-center">No Of Actions Pending</h4>
-      </div>
-      <div class="d-flex align-content-center justify-content-between">
-        <div class="d-inline-flex align-content-center action-wrap-icon">
-          <img src="assets/images/pointer-icon.png" class="character-img">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light m-0">
+    <span class="col-auto pr-0 logo-wrap"><img src="assets/images/digisign logo 2.png" class="w-100"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="col-auto d-inline-flex justify-content-end align-items-center pr-0 notification-wrap">
+      <i class="la la-search mx-3 notification-icon"></i>
+      <i class="la la-bell mx-3 notification-icon">
+        <span class="d-inline-flex align-items-center justify-content-center notification-count">4</span>
+      </i>
+      <span class="d-inline-block mx-3 user-icon"></span>
+    </span>
+  </nav>
+  <div class="w-100 d-inline-flex flex-column certificate-status-wrap">
+    <div class="row m-0 p-5">
+      <div class="p-3 action-wrap action-pending float-left">
+        <div class="">
+          <h4 class="text-center">No Of Actions Pending</h4>
         </div>
-        <div class="d-inline-flex align-items-baseline action-wrap-count">
-          <span class="action-count">
-            4/
-          </span>
-          <span class="action-total">
-            20
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="p-3 action-wrap action-cenrtify ml-5 float-left">
-      <div class="">
-        <h4 class="text-center">Number Of Certificates</h4>
-      </div>
-      <div class="d-flex align-content-center justify-content-between">
-        <div class="d-inline-flex align-content-center action-wrap-icon">
-          <img src="assets/images/document-icon.png" class="character-img">
-        </div>
-        <div class="d-inline-flex align-items-baseline action-wrap-count">
-          <span class="action-count">
-            12/
-          </span>
-          <span class="action-total">
-            18
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="ml-5 p-3 float-left d-flex align-items-center justify-content-between flex-row new-upload">
-      <div class="new-upload-subtitel">
-        Upload New Certificate
-      </div>
-      <div class="d-flex align-items-center justify-content-center flex-column form-wrap">
-        <span class="d-inline-block">
-          <img src="assets/images/upload icon.png">
-        </span>
-        <br>
-        <form>
-          <div class="input-group align-items-center justify-content-center upload-btn-wrap">
-            <span class="d-inline-block text-center upload-btn-text">Choose files to Upload</span>
-            <input type="file" class="upload upload-btn h-100 w-100" />
+        <div class="d-flex align-content-center justify-content-between">
+          <div class="d-inline-flex align-content-center action-wrap-icon">
+            <!-- <img src="assets/images/pointer-icon.png" class="character-img d-none"> -->
+            <span class="la la-hand-o-right"></span>
           </div>
-        </form>
+          <div class="d-inline-flex align-items-baseline action-wrap-count">
+            <span class="action-count">
+              4/
+            </span>
+            <span class="action-total">
+              20
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-3 action-wrap action-cenrtify ml-5 float-left">
+        <div class="">
+          <h4 class="text-center">Number Of Certificates</h4>
+        </div>
+        <div class="d-flex align-content-center justify-content-between">
+          <div class="d-inline-flex align-content-center action-wrap-icon">
+            <!-- <img src="assets/images/document-icon.png" class="character-img d-none"> -->
+            <span class="la la-file-text"></span>
+          </div>
+          <div class="d-inline-flex align-items-baseline action-wrap-count">
+            <span class="action-count">
+              12/
+            </span>
+            <span class="action-total">
+              18
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="ml-5 p-3 float-left d-flex align-items-center justify-content-between flex-row new-upload">
+        <div class="new-upload-subtitel">
+          Upload New Certificate
+        </div>
+        <div class="d-flex align-items-center justify-content-center flex-column form-wrap">
+          <span class="d-inline-block">
+            <img src="assets/images/upload icon.png">
+          </span>
+          <br>
+          <form>
+            <div class="input-group align-items-center justify-content-center upload-btn-wrap">
+              <span class="d-inline-block text-center upload-btn-text">Choose files to Upload</span>
+              <input type="file" class="upload upload-btn h-100 w-100" />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="certificates-list-wrap">
-    testing
-  </div>
-  <div class="d-flex p-3 footer-wrap">
-    <button class="btn share-button">Share Selected Document</button>
+    <div class="p-5 flex-fill certificates-list-wrap">
+      <div class="mr-3 mb-3 float-left certificate-wrap">
+        <div class="py-2 px-3 d-flex align-items-center justify-content-between certificate-wrap-header">
+          <div class="certificate-mark">10th Marks Card</div>
+          <div class="certificate-status"><span class="la la-check-circle"></span>Verified</div>
+        </div>
+        <div class="p-3">
+          <img src="assets/images/document-img.png" class="w-100">
+        </div>
+      </div>
+      <div class="mr-3 mb-3 float-left certificate-wrap">
+        <div class="py-2 px-3 d-flex align-items-center justify-content-between certificate-wrap-header">
+          <div class="certificate-mark">10th Marks Card</div>
+          <div class="certificate-status"><span class="la la-check-circle"></span>Verified</div>
+        </div>
+        <div class="p-3">
+          <img src="assets/images/document-img.png" class="w-100">
+        </div>
+      </div>
+      <div class="mr-3 mb-3 float-left certificate-wrap">
+        <div class="py-2 px-3 d-flex align-items-center justify-content-between certificate-wrap-header">
+          <div class="certificate-mark">10th Marks Card</div>
+          <div class="certificate-status"><span class="la la-check-circle"></span>Verified</div>
+        </div>
+        <div class="p-3">
+          <img src="assets/images/document-img.png" class="w-100">
+        </div>
+      </div>
+      <div class="mr-3 mb-3 float-left certificate-wrap">
+        <div class="py-2 px-3 d-flex align-items-center justify-content-between certificate-wrap-header">
+          <div class="certificate-mark">10th Marks Card</div>
+          <div class="certificate-status"><span class="la la-check-circle"></span>Verified</div>
+        </div>
+        <div class="p-3">
+          <img src="assets/images/document-img.png" class="w-100">
+        </div>
+      </div>
+      <div class="mr-3 mb-3 float-left certificate-wrap">
+        <div class="py-2 px-3 d-flex align-items-center justify-content-between certificate-wrap-header">
+          <div class="certificate-mark">10th Marks Card</div>
+          <div class="certificate-status"><span class="la la-check-circle"></span>Verified</div>
+        </div>
+        <div class="p-3">
+          <img src="assets/images/document-img.png" class="w-100">
+        </div>
+      </div>
+    </div>
+    <div class="d-flex px-5 py-1 footer-wrap">
+      <button class="btn align-items-center d-flex justify-content-between share-button"><span class="la la-share-alt ml-2 mr-4"></span><span
+          class="share-button-text">Share Selected Document</span></button>
+    </div>
   </div>
 </div>

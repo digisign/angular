@@ -138,7 +138,7 @@ p {
   width: 281.2px;
   height: 46.9px;
   border-radius: 55px;
-  background-color: #195bdd;
+  background-color: #bdbdbd;
   margin-left: 25px;
   border: 0px;
   margin: 30px;
@@ -166,7 +166,7 @@ p {
 
 }
 
-.register {
+.register-link {
 
   font-size: 12px;
   font-weight: normal;
@@ -209,4 +209,12 @@ p {
   z-index: 9;
   padding: 0 10px;
   font-size: 12px;
+}
+
+.ng-unvaild .signinbtn {
+  background-color: #bdbdbd;
+}
+
+.ng-valid .signinbtn {
+  background-color: #195bdd;
 }

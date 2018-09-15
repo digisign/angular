@@ -162,7 +162,11 @@ h6 {
 
 }
 
-.btn-register.valid {
+.ng-unvalid .btn-register {
+  background-color: #bdbdbd;
+}
+
+.ng-valid .btn-register {
   background-color: #195bdd;
 }
 

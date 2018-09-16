@@ -59,7 +59,7 @@ export class UploadDetailsComponent implements OnInit {
 
     this._UploadDetailsService.getGrades().subscribe(
       res=> {
-        this.grades = res._embedded.grades;
+        this.grades = res;
       },
       error => {
         console.log("Not data found");

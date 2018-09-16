@@ -25,6 +25,7 @@ import { UploadDetailsComponent } from './components/upload-details/upload-detai
 import { CertificateStatusComponent } from './components/certificate-status/certificate-status.component';
 import { FilesService } from './services/files.service';
 import { UploadDetailsService } from './services/upload-details/upload-details.service';
+import { RolesService } from './services/roles/roles.service';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { UploadDetailsService } from './services/upload-details/upload-details.s
     AccountService,
     UrlPermission,
     FilesService,
-    UploadDetailsService
+    UploadDetailsService,
+    RolesService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,25 +1,118 @@
 import { Injectable } from '@angular/core';
-import { User } from "../model/model.user";
 import { Http, Response, RequestOptions, Headers } from "@angular/http";
-import { AppComponent } from "../app.component";
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AccountService {
 
+  userInfo = {
+    userId: '',
+    userName: '',
+    password: '',
+    active: '',
+    email: '',
+    socialId: '',
+    statusId: '',
+    roles: [
+      {
+        roleId: '',
+        roleName: '',
+        roleDesc: ''
+      }
+    ],
+    roleId: ''
+  };
+  userInfoSubject: Subject<any> = new Subject<any>();
+
   constructor(public http: Http) { }
 
 
-  createAccount(user: User) {
-    let headers = new Headers();
-    headers.append('Accept', 'application/json');
-
-    let options = new RequestOptions();
-    options.headers = headers;
-
-    const URL = environment.API_ENDPOINT + "user";
+  createAccount(user) {
+    const URL = environment.API_ENDPOINT + 'user';
+    const type = 'POST';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type }
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
     return this.http.post(URL, user, options)
-      .map(resp => resp.json());
+      .map(response =>
+        response.json())
+      .catch(error => Observable.throw(error));
+  }
+
+  getUserDetails(email) {
+    const URL = environment.API_ENDPOINT + 'user?email=' + email;
+    const type = 'GET';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type }
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
+    return this.http.get(URL, options)
+      .map(this.extractData)
+      .catch(error => Observable.throw(error));
+  }
+
+  private extractData(res: Response) {
+    return res.text() ? res.json() : {};
+  }
+
+  setUserInfo(res) {
+    this.userInfo.userId = res.userId;
+    this.userInfo.userName = res.userName;
+    this.userInfo.active = res.active;
+    this.userInfo.email = res.email;
+    this.userInfo.socialId = res.socialId;
+    this.userInfo.statusId = res.statusId;
+    this.userInfo.roleId = res.roleId
+    sessionStorage.setItem('userInfo', JSON.stringify(this.userInfo));
+  }
+
+  getUserInfo(): Subject<any> {
+    setTimeout(() => {
+      if (this.userInfo && this.userInfo.userId) {
+        this.userInfoSubject.next(this.userInfo);
+      } else {
+        try {
+          this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')) || {};
+          if (this.userInfo && this.userInfo.userId) {
+            this.userInfoSubject.next(this.userInfo);
+          } else {
+            this.userInfoSubject.next(false);
+          }
+        } catch (e) {
+          return false;
+        }
+      }
+    }, 1);
+    return this.userInfoSubject;
+  }
+
+  clearUserInfo() {
+    sessionStorage.clear();
+    this.userInfo = {
+      userId: '',
+      userName: '',
+      password: '',
+      active: '',
+      email: '',
+      socialId: '',
+      statusId: '',
+      roles: [
+        {
+          roleId: '',
+          roleName: '',
+          roleDesc: ''
+        }
+      ],
+      roleId: ''
+    };
+    this.userInfoSubject.next(this.userInfo);
   }
 
 }

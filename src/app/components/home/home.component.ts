@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Routes, Router} from '@angular/router';
+import { Router} from '@angular/router';
+import { RolesService } from '../../services/roles/roles.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,16 +9,22 @@ import {Routes, Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   activeBtn = '';
-  constructor(private router:Router) { }
+  roles = [];
+  constructor(
+    private router:Router,
+    private _RolesService: RolesService
+    ) { }
 
   ngOnInit() {
+    this._RolesService.getRoles().subscribe(
+      res=> {
+        this.roles = res;
+      },
+      error => {
+
+      }); 
   }
-  myFunction(btn)
-  {   
-    this.activeBtn = btn;
-    
-  }
-  goPlaces() {
-    this.router.navigate(['/register']);
+  goTo(id) {
+    this.router.navigate(['/register', {id: id}]);
   }
 }

@@ -12,12 +12,13 @@ export class AuthService {
       email: user.email,
       password: user.password
     }
-    let headers = new Headers();
-    headers.append('Accept', 'application/json')
-
-    let options = new RequestOptions();
-    options.headers = headers;
-    const URL = environment.API_ENDPOINT + "login"
+    const URL = environment.API_ENDPOINT + "login";
+    const type = 'POST';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type}
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
     return this.http.post(URL, base, options);
   }
 

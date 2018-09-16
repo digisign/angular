@@ -8,7 +8,7 @@
     </div>
     <div class="my-5 register-page-titel">REGISTER</div>
     <a [routerLink]="['/home']" class="back-button">
-      &laquo; Back</a><button class="student_btn">I am an student</button>
+      &laquo; Back</a><button class="student_btn">I am an {{roleName}}</button>
     <h6 class="my-4 social-media-title">Login with social media</h6>
 
     <!-- <div class="social">
@@ -27,7 +27,7 @@
     </div>
     <p id="profile-name" class="profile-name-card"></p>
 
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && register(f.form.value, roleId)" #f="ngForm" novalidate>
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
       <span id="reauth-email" class="reauth-email"></span>
       <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">

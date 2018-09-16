@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register/:id', component: RegisterComponent },
   { path: 'fileupload', component: FileuplodComponent },
   /*{  path: 'files', component: FilesComponent },
   { path: 'pdf', component: FilepdfComponent },

@@ -1,13 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="assets/images/digisign logo 2.png" style="width:100px">
-
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 </nav>
 
 <div class="w-100 d-flex fileUpload-wrap align-items-center flex-column pt-5">
@@ -20,15 +17,18 @@
       <img src="assets/images/upload icon.png">
     </span>
     <br>
-    <form [formGroup]="UserForm" id="UserForm" (ngSubmit)="onSubmit(UserForm.value)">
-      <div class="input-group align-items-center justify-content-center upload-btn-wrap">
-        <span class="d-inline-block text-center upload-btn-text">Choose File</span>
-        <input type="file" class="upload upload-btn h-100 w-100" (change)="selectFile($event)" />
-      </div>
-      
-      <div class="text-center drop-upload py-4">
-        or drag and drop them here
-      </div>
-    </form>
+    <div draggable="true" ngClass="{{dragAreaClass}}" class="input-group align-items-center justify-content-center upload-btn-wrap">
+      <span class="d-inline-block text-center upload-btn-text">Choose File</span>
+      <input type="file" class="upload upload-btn h-100 w-100" (change)="onFileChange($event)" #file [multiple]="(maxFiles > 1)" />
+    </div>
+
+    <div class="text-center drop-upload py-4">
+      or drag and drop them here
+    </div>
+    <div class="row error" *ngIf="errors.length > 0">
+      <ul>
+        <li *ngFor="let err of errors">{{err}}</li>
+      </ul>
+    </div>
   </div>
 </div>

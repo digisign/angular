@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
@@ -8,37 +8,133 @@ import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 @Component({
   selector: 'app-fileuplod',
   templateUrl: './fileuplod.component.html',
-  styleUrls: ['./fileuplod.component.css'],
+  styleUrls: ['./fileuplod.component.css']
 })
 
-export class FileuplodComponent  {
+export class FileuplodComponent implements OnInit {
   UserForm: FormGroup;
   UserFile: String;
   selectedFiles: FileList;
   currentFileUpload: File;
-  public url = environment.API_ENDPOINT+ "files";
-  
+  public url = environment.API_ENDPOINT + "files";
+
+  errors: Array<string> = [];
+  dragAreaClass: string = 'dragarea';
+  @Input() projectId: number;
+  @Input() sectionId: number;
+  @Input() fileExt: string = "PDF, PNG";
+  @Input() maxFiles: number = 5;
+  @Input() maxSize: number = 5; // 5MB
+  @Output() uploadStatus = new EventEmitter();
+  files = [];
+
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     public http: Http,
-    private _FilesService: FilesService
-    ) {
-    this.UserForm = this.fb.group({ 'UserFile': ['', Validators.required] })
+    private fileService: FilesService
+  ) { }
+
+  ngOnInit() { }
+
+  onFileChange(event) {
+    this.files.push(event.target.files[0].name);
+    this.saveFiles(this.files);
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+  @HostListener('dragover', ['$event']) onDragOver(event) {
+    this.dragAreaClass = "droparea";
+    event.preventDefault();
   }
 
-  upload() {
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this._FilesService.uploadFile(this.currentFileUpload).subscribe(event => {
-     if (event instanceof HttpResponse) {
-        console.log('File is completely uploaded!');
+  @HostListener('dragenter', ['$event']) onDragEnter(event) {
+    this.dragAreaClass = "droparea";
+    event.preventDefault();
+  }
+
+  @HostListener('dragend', ['$event']) onDragEnd(event) {
+    this.dragAreaClass = "dragarea";
+    event.preventDefault();
+  }
+
+  @HostListener('dragleave', ['$event']) onDragLeave(event) {
+    this.dragAreaClass = "dragarea";
+    event.preventDefault();
+  }
+  @HostListener('drop', ['$event']) onDrop(event) {
+    this.dragAreaClass = "dragarea";
+    event.preventDefault();
+    event.stopPropagation();
+    this.files.push(event.dataTransfer.files[0].name);
+    this.saveFiles(this.files);
+  }
+
+  saveFiles(files) {
+    this.errors = []; // Clear error
+    // Validate file size and allowed extensions
+    if (files.length > 0 && (!this.isValidFiles(files))) {
+      this.uploadStatus.emit(false);
+      return;
+    }
+
+    if (files.length > 0) {
+      /* let formData: FormData = new FormData();
+      for (var j = 0; j < files.length; j++) {
+        formData.append("file[]", files[j], files[j].name);
+      }  
+      console.log(formData); */
+      /* var parameters = {
+        projectId: this.projectId,
+        sectionId: this.sectionId
+      } */
+      this.fileService.upload(files)
+        .subscribe(
+          success => {
+            this.uploadStatus.emit(true);
+            console.log(success)
+          },
+          error => {
+            this.uploadStatus.emit(true);
+            this.errors.push(error.ExceptionMessage);
+          })
+    }
+  }
+
+  private isValidFiles(files) {
+    // Check Number of files
+    if (files.length > this.maxFiles) {
+      this.errors.push("Error: At a time you can upload only " + this.maxFiles + " files");
+      return;
+    }
+    this.isValidFileExtension(files);
+    return this.errors.length === 0;
+  }
+
+  private isValidFileExtension(files) {
+    // Make array of file extensions
+    var extensions = (this.fileExt.split(','))
+      .map(function (x) { return x.toLocaleUpperCase().trim() });
+
+    for (var i = 0; i < files.length; i++) {
+      // Get file extension
+     // var ext = files[i].name.toUpperCase().split('.').pop() || files[i].name;
+      var ext = files[i].toUpperCase().split('.').pop() || files[i];
+      // Check the extension exists
+      var exists = extensions.includes(ext);
+      if (!exists) {
+        this.errors.push("Error (Extension): " + files[i].name);
       }
-    });
-    this.selectedFiles = undefined;
+      // Check file size
+      //this.isValidFileSize(files[i]);
+    }
   }
+
+
+  /* private isValidFileSize(file) {
+    var fileSizeinMB = file.size / (1024 * 1000);
+    var size = Math.round(fileSizeinMB * 100) / 100; // convert upto 2 decimal place
+    if (size > this.maxSize)
+      this.errors.push("Error (File Size): " + file.name + ": exceed file size limit of " + this.maxSize + "MB ( " + size + "MB )");
+  } */
 
 }
 

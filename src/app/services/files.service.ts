@@ -14,12 +14,13 @@ export class FilesService {
     const URL = environment.API_ENDPOINT+ "files";
     const type = 'POST';
     const body = files;
-    const headers = new Headers({
-      'Content-Type': 'multipart/form-data',
-      'params': { URL, _type: type, data: body }
+    
+    let headers = new Headers({
+      'Content-Type':'multipart/form-data',
+      'Accept':'application/json'
     });
     const options = new RequestOptions({ headers: headers, withCredentials: false });
-    return this._http.post(URL, body, options)
+    return this._http.post(URL, body,options )
     .map(response => response.json())
     .catch(error => Observable.throw(error));
   }

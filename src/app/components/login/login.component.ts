@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             this._AccountService.setUserInfo(res);
             this._AccountService.userInfoSubject.next(this._AccountService.getUserInfo());
           });
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/fileupload']);
       }
     }, err => {
       this.errorMessage = "Enter Valid Username/password";

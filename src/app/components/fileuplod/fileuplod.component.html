@@ -17,18 +17,18 @@
       <img src="assets/images/upload icon.png">
     </span>
     <br>
-    <div draggable="true" ngClass="{{dragAreaClass}}" class="input-group align-items-center justify-content-center upload-btn-wrap">
+    <!--div draggable="true" ngClass="{{dragAreaClass}}" class="input-group align-items-center justify-content-center upload-btn-wrap">
       <span class="d-inline-block text-center upload-btn-text">Choose File to Upload</span>
       <input type="file" class="upload upload-btn h-100 w-100" (change)="onFileChange($event)" #file [multiple]="(maxFiles > 1)" />
-    </div>
+    </div-->
 
-    <div class="text-center drop-upload py-4">
+    <!--div class="text-center drop-upload py-4">
       or drag and drop them here
-    </div>
-    <div class="row error" *ngIf="errors.length > 0">
-      <ul>
-        <li *ngFor="let err of errors">{{err}}</li>
-      </ul>
-    </div>
+    </div-->
+    <angular-file-uploader fileUpload
+    [config]="afuConfig"
+    (ApiResponse)="getFileUploadResponse($event)">
+</angular-file-uploader>
+  <input type="button" value="Back to Upload Details" *ngIf="status" (click)="goTo()"/>
   </div>
 </div>

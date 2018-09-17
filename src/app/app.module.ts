@@ -14,6 +14,7 @@ import { routing} from "./app.routing";
 import { UrlPermission } from "./urlPermission/url.permission";
 import { MatAutocompleteModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 import { HomeComponent } from './components/home/home.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
@@ -26,6 +27,8 @@ import { CertificateStatusComponent } from './components/certificate-status/cert
 import { FilesService } from './services/files.service';
 import { UploadDetailsService } from './services/upload-details/upload-details.service';
 import { RolesService } from './services/roles/roles.service';
+import { GetSetSessionDetails } from './utils/getSessionDetails';
+ 
 
 
 @NgModule({
@@ -57,7 +60,8 @@ import { RolesService } from './services/roles/roles.service';
     MatSelectModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AngularFileUploaderModule
   ],
   providers: [ 
     AuthService,
@@ -65,7 +69,8 @@ import { RolesService } from './services/roles/roles.service';
     UrlPermission,
     FilesService,
     UploadDetailsService,
-    RolesService
+    RolesService,
+    GetSetSessionDetails
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UploadDetailsService } from '../../services/upload-details/upload-details.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { GetSetSessionDetails } from '../../utils/getSessionDetails';
 
 
 @Component({
@@ -11,22 +12,36 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 })
 export class UploadDetailsComponent implements OnInit {
   public instituteDetails = [];
-  public institutes = [];
+  public institutesDupliate = [];
+  public coursesDuplicate = [];
   public years = [];
+  public degree: FormControl = new FormControl();
+  public marks: FormControl = new FormControl();
   public institute: FormControl = new FormControl();
   public course: FormControl = new FormControl();
   public grade: FormControl = new FormControl();
   public startDate: FormControl = new FormControl();
   public endDate: FormControl = new FormControl();
   public credentailsYear: FormControl = new FormControl();
+  courseId: any;
+  institutionId: any;
+  intitutionName: string;
+  courseName: string;
+  gradeName: string;
+  gardeId: any;
+  file: string;
+  thumbNailPath: string;
+  statusId: any;
 
   @Output() optionSelected: EventEmitter<MatAutocompleteSelectedEvent>
   userDetails: FormGroup;
   coursesDetails = [];
   grades = [];
+  userId: any;
   constructor(
     private fb: FormBuilder,
-    private _UploadDetailsService: UploadDetailsService
+    private _UploadDetailsService: UploadDetailsService,
+    private _GetSetSessionDetails: GetSetSessionDetails
   ) { }
 
   ngOnInit() {
@@ -38,16 +53,16 @@ export class UploadDetailsComponent implements OnInit {
       grade: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      place: ['', Validators.required],
-      year: ['', Validators.required]
+      credentailsYear: ['', Validators.required]
     }, { validator: this.checkDates });
 
     this.getListofYears();
+    this.userId = this._GetSetSessionDetails.userInfoDetails().userId;
 
     this._UploadDetailsService.getDetails().subscribe(
       res => {
         this.instituteDetails = res;
-        this.institutes = res;
+        this.institutesDupliate = res;
       },
       error => {
         console.log("Not data found");
@@ -68,6 +83,32 @@ export class UploadDetailsComponent implements OnInit {
 
   }
 
+  formSubmit(formValues) {
+    const values = {
+      resourceId: null,
+      userId: this.userId,
+      marks: formValues.marks,
+      courseId: this.courseId,
+      institutionId: this.institutionId,
+      gradeId: this.gardeId,
+      degree: formValues.degree,
+      institutionName: formValues.institute,
+      courseName: formValues.course,
+      gradeName: formValues.grade,
+      filePath: this.file,
+      thumbNailPath: this.thumbNailPath,
+      statusId: 1
+    }
+
+    this._UploadDetailsService.credentialResource(values).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  getGradeId(grade: string) {
+    this.gardeId = this.coursesDetails.find(element => element.gradeName == grade).gradeId;
+  }
+
   //get List of years
   getListofYears() {
     const max = new Date().getFullYear();
@@ -78,10 +119,15 @@ export class UploadDetailsComponent implements OnInit {
   }
 
   // onChange of institute, displaying list of course name
-  onSelectionChanged(course: string) {
+  onInstitutionChanged(institution: string) {
     this.course.setValue('');
-    const id = this.instituteDetails.find(element => element.institutionName == course).institutionId;;
-    this.coursesDetails = this.institutes[id].courses;
+    this.institutionId = this.instituteDetails.find(element => element.institutionName == institution).institutionId;
+    const id = this.instituteDetails.findIndex((item)=>{return item.institutionName == institution});
+    this.coursesDetails = this.institutesDupliate[id].courses;
+  }
+
+  onCourseChanged(course: string) {
+    this.courseId = this.coursesDetails.find(element => element.courseName == course).courseId;
   }
 
   checkDates(group: FormGroup) {
@@ -93,7 +139,7 @@ export class UploadDetailsComponent implements OnInit {
 
   // to filter the institute name
   filterValues(search: string) {
-    return this.institutes.filter(value => {
+    return this.institutesDupliate.filter(value => {
       return value.institutionName.toLowerCase().includes(search);
     });
   }

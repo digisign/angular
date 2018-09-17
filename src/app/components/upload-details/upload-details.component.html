@@ -19,16 +19,16 @@
             <input matInput formControlName="degree" placeholder="Please enter degree obtained">
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
-            <input type="text" matInput [formControl]="institute" [matAutocomplete]="auto" placeholder="Please enter institute name">
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChanged($event.option.value)">
+            <input type="text" matInput formControlName="institute" [matAutocomplete]="auto" placeholder="Please enter institute name">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onInstitutionChanged($event.option.value)">
               <mat-option *ngFor="let item of instituteDetails" [value]="item.institutionName">
                 {{ item.institutionName }}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
-            <input type="text" matInput [formControl]="course" [matAutocomplete]="autoCourse" placeholder="Please enter course name">
-            <mat-autocomplete #autoCourse="matAutocomplete">
+            <input type="text" matInput formControlName="course" [matAutocomplete]="autoCourse" placeholder="Please enter course name">
+            <mat-autocomplete #autoCourse="matAutocomplete" (optionSelected)="onCourseChanged($event.option.value)">
               <mat-option *ngFor="let courseItem of coursesDetails" [value]="courseItem.courseName">
                 {{ courseItem.courseName }}
               </mat-option>
@@ -38,8 +38,8 @@
             <input type="text" matInput formControlName="marks" placeholder="Marks obtained">
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
-            <input type="text" matInput [formControl]="grade" [matAutocomplete]="autoGrade" placeholder="Grade Secured">
-            <mat-autocomplete #autoGrade="matAutocomplete">
+            <input type="text" matInput formControlName="grade" [matAutocomplete]="autoGrade" placeholder="Grade Secured">
+            <mat-autocomplete #autoGrade="matAutocomplete" (optionSelected)="getGradeId($event.option.value)">
               <mat-option *ngFor="let gradeItem of grades" [value]="gradeItem.gradeName">
                 {{ gradeItem.gradeName }}
               </mat-option>
@@ -47,24 +47,24 @@
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
             <div class="d-flex">
-              <input matInput [formControl]="startDate" [matDatepicker]="startpicker" placeholder="Start Date">
+              <input matInput formControlName="startDate" [matDatepicker]="startpicker" placeholder="Start Date">
               <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
               <mat-datepicker #startpicker></mat-datepicker>
-              <input matInput [formControl]="endDate" [matDatepicker]="endpicker" placeholder="End Date">
+              <input matInput formControlName="endDate" [matDatepicker]="endpicker" placeholder="End Date">
               <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
               <mat-datepicker #endpicker></mat-datepicker>
               <small *ngIf="userDetails.hasError('notValid')">Not valid</small>
             </div>
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
-            <mat-select placholder="year" [formControl]="credentailsYear">
+            <mat-select placholder="year" formControlName="credentailsYear">
               <mat-option *ngFor="let year of years" value="year">{{year}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
       <div class="text-center edit-button">
-        <button class="btn submit-button">Edit Details</button>
+        <button class="btn submit-button">Save</button>
       </div>
       <div class="text-center verification-button d-none">
         <button class="btn submit-button">Send For Verification</button>

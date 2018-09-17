@@ -12,19 +12,11 @@ export class AccountService {
   userInfo = {
     userId: '',
     userName: '',
-    password: '',
     active: '',
     email: '',
     socialId: '',
     statusId: '',
-    roles: [
-      {
-        roleId: '',
-        roleName: '',
-        roleDesc: ''
-      }
-    ],
-    roleId: ''
+    roles: [ ],
   };
   userInfoSubject: Subject<any> = new Subject<any>();
 
@@ -63,13 +55,19 @@ export class AccountService {
   }
 
   setUserInfo(res) {
+    res.roles.forEach(role => {
+      this.userInfo.roles.push({
+        roleId: role.roleId,
+        roleName: role.roleName,
+        roleDesc: role.roleDesc
+      });
+    });
     this.userInfo.userId = res.userId;
     this.userInfo.userName = res.userName;
     this.userInfo.active = res.active;
     this.userInfo.email = res.email;
     this.userInfo.socialId = res.socialId;
     this.userInfo.statusId = res.statusId;
-    this.userInfo.roleId = res.roleId
     sessionStorage.setItem('userInfo', JSON.stringify(this.userInfo));
   }
 
@@ -98,7 +96,6 @@ export class AccountService {
     this.userInfo = {
       userId: '',
       userName: '',
-      password: '',
       active: '',
       email: '',
       socialId: '',
@@ -110,7 +107,6 @@ export class AccountService {
           roleDesc: ''
         }
       ],
-      roleId: ''
     };
     this.userInfoSubject.next(this.userInfo);
   }

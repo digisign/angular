@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { map, catchError } from 'rxjs/operators';
   
 @Injectable({
   providedIn: 'root'
@@ -12,6 +11,20 @@ import { map, catchError } from 'rxjs/operators';
 export class UploadDetailsService {
 
   constructor(public http: Http) { }
+
+  credentialResource(values) {
+    const URL = environment.API_ENDPOINT+ 'credentialResource';
+    const body = values;
+    const type = 'POST';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type}
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
+    return this.http.post(URL, body, options).map(res => {
+      return res.json();
+    });
+  }
 
   getDetails() {
     const URL = environment.API_ENDPOINT+ 'institution';

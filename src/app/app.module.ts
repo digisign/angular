@@ -28,7 +28,8 @@ import { FilesService } from './services/files.service';
 import { UploadDetailsService } from './services/upload-details/upload-details.service';
 import { RolesService } from './services/roles/roles.service';
 import { GetSetSessionDetails } from './utils/getSessionDetails';
- 
+import { SharedService } from './services/shared.service';
+
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { GetSetSessionDetails } from './utils/getSessionDetails';
     FilesService,
     UploadDetailsService,
     RolesService,
-    GetSetSessionDetails
+    GetSetSessionDetails,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

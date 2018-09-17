@@ -3,6 +3,8 @@ import { UploadDetailsService } from '../../services/upload-details/upload-detai
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { GetSetSessionDetails } from '../../utils/getSessionDetails';
+import { SharedService } from '../../services/shared.service';
+
 
 
 @Component({
@@ -32,19 +34,28 @@ export class UploadDetailsComponent implements OnInit {
   file: string;
   thumbNailPath: string;
   statusId: any;
+  imageURL: string;
 
   @Output() optionSelected: EventEmitter<MatAutocompleteSelectedEvent>
   userDetails: FormGroup;
   coursesDetails = [];
   grades = [];
   userId: any;
+  thumbNail: string;
+  filePath: string;
   constructor(
     private fb: FormBuilder,
     private _UploadDetailsService: UploadDetailsService,
-    private _GetSetSessionDetails: GetSetSessionDetails
+    private _GetSetSessionDetails: GetSetSessionDetails,
+    private _SharedService: SharedService
   ) { }
 
   ngOnInit() {
+    this._SharedService.getFileInfo.subscribe(response => {
+      this.filePath = response[0].filePath;
+      this.thumbNail = response[0].thumbNailPath;
+    });
+    this.imageURL = "http://172.16.18.173:8080/files?fileName="+ this.thumbNail + "&isThumbNail=" + 1;
     this.userDetails = this.fb.group({
       degree: ['', Validators.required],
       course: ['', Validators.required],
@@ -95,9 +106,11 @@ export class UploadDetailsComponent implements OnInit {
       institutionName: formValues.institute,
       courseName: formValues.course,
       gradeName: formValues.grade,
-      filePath: this.file,
-      thumbNailPath: this.thumbNailPath,
-      statusId: 1
+      filePath: this.filePath,
+      thumbNailPath: this.thumbNail,
+      statusId: 1,
+      startYear: formValues.startDate,
+      endYear:  formValues.endDate
     }
 
     this._UploadDetailsService.credentialResource(values).subscribe(res => {
@@ -106,7 +119,7 @@ export class UploadDetailsComponent implements OnInit {
   }
 
   getGradeId(grade: string) {
-    this.gardeId = this.coursesDetails.find(element => element.gradeName == grade).gradeId;
+    this.gardeId = this.grades.find(element => element.gradeName == grade).gradeId;
   }
 
   //get List of years

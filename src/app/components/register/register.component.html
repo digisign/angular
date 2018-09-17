@@ -3,40 +3,46 @@
   <!-- <div class="col-md-12"> -->
   <div class="col-auto register-box">
     <!-- col-md-3 -->
-    <div class="d-inline-block py-5 pr-4 text-center logo">
-      <img src="assets/images/digisign_logo.png">
-    </div>
-    <div class="my-5 register-page-titel">REGISTER</div>
-    <a [routerLink]="['/home']" class="back-button">
-      &laquo; Back</a><button class="student_btn">I am an student</button>
-    <h6 class="my-4 social-media-title">Login with social media</h6>
+    <form name="form" class="h-100 d-inline-flex justify-content-between flex-column" (ngSubmit)="f.form.valid && register()"
+      #f="ngForm" novalidate>
+      <div>
+        <div class="d-inline-block pt-3 text-center logo">
+          <img src="assets/images/digisign_logo.png">
+        </div>
+        <div class="my-2 register-page-titel">REGISTER</div>
+      </div>
+      <div>
+        <a [routerLink]="['/home']" class="back-button">
+          &laquo; Back</a><button class="student_btn">I am an student</button>
+      </div>
+      <h6 class="my-2 social-media-title">Login with social media</h6>
 
-    <!-- <div class="social">
+      <!-- <div class="social">
         <button class="socialmedia"><i class="fa fa-facebook-square">Facebook</i></button>
         <button class="socialmedia1"><i class="fa fa-twitter">Twitter</i></button>
         <button class="socialmedia2">google+</button>
       </div> -->
-    <div class="d-flex justify-content-between social">
-      <button class="btn socialmedia"><i class="fa fa-facebook-square"></i><span class="pl-2">Facebook</span></button>
-      <button class="btn socialmedia1"><i class="fa fa-twitter"></i><span class="pl-2">Twitter</span></button>
-      <button class="btn socialmedia2">google+</button>
-    </div>
-    <!-- <p>____________or____________</p> -->
-    <div class="w-100 p-4 btn-group justify-content-center or-line">
-      <span class="d-inline-block or-line-text">or</span>
-    </div>
-    <p id="profile-name" class="profile-name-card"></p>
+      <div class="d-flex justify-content-between social">
+        <button class="btn socialmedia"><i class="fa fa-facebook-square"></i><span class="pl-2">Facebook</span></button>
+        <button class="btn socialmedia1"><i class="fa fa-twitter"></i><span class="pl-2">Twitter</span></button>
+        <button class="btn socialmedia2">google+</button>
+      </div>
+      <!-- <p>____________or____________</p> -->
+      <div class="w-100 p-2 btn-group justify-content-center or-line">
+        <span class="d-inline-block or-line-text">or</span>
+      </div>
+      <!-- <p id="profile-name" class="profile-name-card"></p> -->
 
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
       <span id="reauth-email" class="reauth-email"></span>
-      <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
         <label for="userName" class="labletext">Username</label>
         <input type="text" placeholder="Provide your username" class="form-control" name="userName" id="userName"
           [(ngModel)]="user.userName" #userName="ngModel" required />
         <div *ngIf="f.submitted && !userName.valid" class="help-block">The full Name is required</div>
       </div>
-      <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
         <label for="email" class="labletext">Email </label>
         <input type="text" placeholder="Provide an active address" class="form-control" name="email" id="email" pattern="[^ @]*@[^ @]*"
           [(ngModel)]="user.email" #email="ngModel" required />
@@ -51,7 +57,7 @@
 
         </div>
       </div>
-      <div class="form-group mb-5" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
         <label for="password" class="labletext">Password</label>
         <input type="password" placeholder="Minimum 7 characters" class="form-control" name="password" id="password"
           [(ngModel)]="user.password" #password="ngModel" required minlength="7" />
@@ -67,7 +73,7 @@
         </div>
       </div>
 
-      <div class="form-group mb-5" [ngClass]="{'has-error':f.submitted && !isActive.valid}">
+      <div class="form-group" [ngClass]="{'has-error':f.submitted && !isActive.valid}">
         <div class="">
           <label class="d-flex justify-content-start align-items-center">
             <input type="checkbox" class="checkbox1 m-0" name="isActive" required #isActive="ngModel" [(ngModel)]="user.isActive">
@@ -84,10 +90,8 @@
         </div>
 
       </div>
-
-
-      <button class=" btn-register" type="submit">REGISTER</button>
-      <div class="text-center py-5">
+      <button class="btn-register" type="submit">REGISTER</button>
+      <div class="pb-4 pt-1 text-center">
         <a [routerLink]="['/login']">
           <span class="already-account">Already have an account <span class="signin">Sign In</span></span>
         </a>

@@ -7,11 +7,14 @@
 }
 
 .logo {
-  /* display: flex;
-  width: 70px; */
-  height: 164px;
-  /* align-items: center;
-  justify-content: center; */
+  width: 70px;
+  height: 120px;
+}
+
+.social-media-title {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #8c8c8c;
 }
 
 h3 {

@@ -10,7 +10,7 @@
 .logo {
   display: flex;
   width: 70px;
-  height: 164px;
+  height: 120px;
   align-items: center;
   justify-content: center;
 }
@@ -100,6 +100,7 @@ h6 {
   font-size: 16px;
   color: #283d4a;
 }
+
 .iagree {
   font-family: Roboto-Regular;
   font-size: 16px;
@@ -110,6 +111,7 @@ h6 {
   letter-spacing: normal;
   color: #787878;
 }
+
 .iagreecmd {
   width: 283px;
   height: 19px;
@@ -135,20 +137,22 @@ h6 {
   color: #005cc7;
 
 }
+
 .already-account {
   font-family: Roboto-Regular;
   font-size: 12px;
   font-weight: 300;
   color: #5e6875;
 }
+
 .btn-register {
   width: 281.2px;
-  height: 46.9px;
+  min-height: 46.9px;
   border-radius: 55px;
   background-color: #bdbdbd;
   border: 0px;
-  margin-left: 25px;
-  margin: 15px;
+  /* margin-left: 25px; */
+  margin: 0 30px; */
   display: flex;
   font-size: 12px;
   font-weight: normal;
@@ -220,6 +224,10 @@ h4 {
   color: #195add;
   margin-left: 35px;
 
+}
+
+.social {
+  min-height: 30px;
 }
 
 .social .btn {
@@ -318,6 +326,10 @@ h2 {
   width: calc(100% - 414px);
 }
 
+.or-line {
+  min-height: 30px;
+}
+
 .or-line:after {
   content: '';
 
@@ -344,6 +356,7 @@ h2 {
   font-size: 14px;
   color: #8c8c8c;
 }
+
 .back-button {
   font-family: Roboto-Regular;
   font-size: 14px;

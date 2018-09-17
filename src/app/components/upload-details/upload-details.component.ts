@@ -108,9 +108,7 @@ export class UploadDetailsComponent implements OnInit {
       gradeName: formValues.grade,
       filePath: this.filePath,
       thumbNailPath: this.thumbNail,
-      statusId: 1,
-      startYear: formValues.startDate,
-      endYear:  formValues.endDate
+      statusId: 1
     }
 
     this._UploadDetailsService.credentialResource(values).subscribe(res => {

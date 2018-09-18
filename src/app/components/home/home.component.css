@@ -1,7 +1,7 @@
 .page-titel {
   color: #195add;
   font-family: Roboto-Regular;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -77,8 +77,8 @@ button.student-btn:focus {
     position: absolute;
 } */
 .logo-wrap {
-  /* width: 164px; */
-  height: 164px;
+  width: 70px;
+  height: 120px;
 }
 
 button.student-btn.active,

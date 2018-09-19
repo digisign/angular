@@ -6,7 +6,6 @@ import { UrlPermission } from './urlPermission/url.permission';
 import { HomeComponent } from './components/home/home.component';
 import { FilepdfComponent } from './components/filepdf/filepdf.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
-import { MyFileUpload } from './components/newfileupload/myfileupload.component';
 import { CredentialsviewsComponent } from './components/credentialsviews/credentialsviews.component';
 import { FilesComponent } from './components/files/files.component';
 import { UploadDetailsComponent } from './components/upload-details/upload-details.component';

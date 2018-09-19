@@ -17,7 +17,6 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HomeComponent } from './components/home/home.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
 import { FilepdfComponent } from './components/filepdf/filepdf.component';
-import { MyFileUpload}  from './components/newfileupload/myfileupload.component';
 import { CredentialsviewsComponent } from './components/credentialsviews/credentialsviews.component';
 import { FilesComponent } from './components/files/files.component';
 import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
@@ -37,7 +36,6 @@ import { SharedService } from './services/shared.service';
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    MyFileUpload,
     FileuplodComponent,
     CredentialsviewsComponent,
     FilesComponent,

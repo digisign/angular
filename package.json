@@ -26,7 +26,6 @@
     "angular5-social-auth": "^1.0.11",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
-    "ng2-file-upload": "^1.3.0",
     "ng2-pdf-viewer": "^5.1.1",
     "rxjs": "6.1.0",
     "rxjs-compat": "6.1.0",

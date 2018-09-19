@@ -6,7 +6,6 @@ import { UrlPermission } from './urlPermission/url.permission';
 import { HomeComponent } from './components/home/home.component';
 import { FilepdfComponent } from './components/filepdf/filepdf.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
-import { MyFileUpload } from './components/newfileupload/myfileupload.component';
 import { CredentialsviewsComponent } from './components/credentialsviews/credentialsviews.component';
 import { FilesComponent } from './components/files/files.component';
 import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
@@ -15,10 +14,11 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register/:id', component: RegisterComponent },
   { path: 'fileupload', component: FileuplodComponent },
-  { path: 'files', component: FilesComponent },
+  /*{  path: 'files', component: FilesComponent },
   { path: 'pdf', component: FilepdfComponent },
-  { path: 'myfileupload', component: MyFileUpload },
+  { path: 'myfileupload', component: MyFileUpload }, */
   { path: 'Credentialsviews', component: CredentialsviewsComponent },
   { path: 'UploadDetails', component: UploadDetailsComponent },
   { path: 'CertificateStatus', component: CertificateStatusComponent },

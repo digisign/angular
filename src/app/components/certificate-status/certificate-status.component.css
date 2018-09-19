@@ -42,27 +42,34 @@
 }
 
 .new-upload {
-  width: calc(100% - 860px);
-  height: 187px;
-  font-size: 14px;
   border-radius: 8px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
   border: solid 1px #e3e3e3;
+  font-size: 14px;
+  height: 187px;
+  min-width: 110px;
+  width: calc(100% - 900px);
 }
 
-.new-upload-subtitel {
+.new-upload .new-upload-subtitel {
   font-family: Roboto-Regular;
   font-size: 22px;
   font-weight: 500;
   color: #195bdd;
+  overflow: hidden;
+  max-width: calc(100% - 180px);
+}
+
+.new-upload .form-wrap {
+  max-width: 180px;
 }
 
 .upload-btn-wrap {
   background-color: #195bdd;
   border-radius: 15px;
   height: 30px;
-  width: 174px;
+  max-width: 174px;
 }
 
 .upload-btn-wrap .upload-btn-text {
@@ -71,6 +78,9 @@
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .upload-btn-wrap .upload-btn {

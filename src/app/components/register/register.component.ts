@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {User} from "../../model/model.user";
-import {AccountService} from "../../services/account.service";
-import {Router} from "@angular/router";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { User } from "../../model/model.user";
+import { AccountService } from "../../services/account.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { RolesService } from '../../services/roles/roles.service';
 
 @Component({
   selector: 'app-register',
@@ -12,33 +13,38 @@ import {Router} from "@angular/router";
 export class RegisterComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
-  roles:any[]
-  constructor(public accountService: AccountService, public router: Router,) {
+  roleName: string;
+  formValue={};
+  roleId: any;
+
+  constructor(
+    public accountService: AccountService,
+    public router: Router,
+    private route: ActivatedRoute,
+    private _RolesService: RolesService) {
   }
 
   ngOnInit() {
-
-      /*this.accountService.getAllRoles().subscribe(
-        (data:any)=>{
-          data.forEach(obj =>obj.selected=false);
-          this.roles=data;
-        }
-      )*/
-    
+    this.route.params.subscribe(params => {
+      this.roleId = params['id'];
+      this._RolesService.getRoles().subscribe(
+        res => {
+          res.forEach(element => {
+            if(element.roleId == this.roleId) {
+              this.roleName = element.roleName;
+            }
+          });
+        });
+    });
   }
 
-  register() {
-    this.accountService.createAccount(this.user).subscribe(data => {
-      
-        this.router.navigate(['/login']);
-      
-      }, err => {
-        console.log(err);
-        this.errorMessage = "username already exist";
-      }
-      
-    )
-    
+  register(formValue, id) {
+    formValue.roleId = parseInt(id);
+    this.accountService.createAccount(formValue).subscribe(data => {
+      this.router.navigate(['/login']);
+    }, err => {
+      this.errorMessage = "username already exist";
+    });
   }
- 
+
 }

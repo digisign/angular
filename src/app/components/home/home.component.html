@@ -3,10 +3,12 @@
   <!-- <div class="col-md-12"> -->
   <div class="col-auto register-box">
     <!-- col-md-3 -->
-    <span class="d-inline-block py-5 pr-4 text-center logo-wrap"> <!-- img -->
-      <img src="assets/images/digisign_logo.png" alt="Digisign"><!-- style="width:40px" -->
-    </span><!-- <br><br><br><br><br><br><br> -->
-    <div class="mb-5 page-titel">REGISTER</div>
+    <div class="mb-5">
+      <span class="d-inline-block pt-3 text-center logo-wrap"> <!-- img -->
+        <img src="assets/images/digisign_logo.png" alt="Digisign"><!-- style="width:40px" -->
+      </span><!-- <br><br><br><br><br><br><br> -->
+      <div class="my-2 page-titel">REGISTER</div>
+    </div>
     <!-- <p>REGISTER</p><br><br> -->
     <!--
 <div>
@@ -16,12 +18,9 @@
     I want to get my credentials verified</option>
   </select>
  </div>-->
-    <!-- <a [routerLink]="['/register']"> --><button class="student-btn" [ngClass]="{'active': activeBtn === 'b1'}" (click)="myFunction('b1')"><span
-          class="text1">I am a Student</span></button><!-- <br><br></a> -->
-    <button class="student-btn" [ngClass]="{'active': activeBtn === 'b2'}" (click)="myFunction('b2')"><span class="text1">I
-        am a Institution</span></button><!-- <br><br> -->
-    <button class="student-btn" [ngClass]="{'active': activeBtn === 'b3'}" (click)="myFunction('b3')"><span class="text1">I
-        am a Requester</span></button>
+      <button class="student-btn" (click)="goTo(role.roleId)" *ngFor="let role of roles">
+        <span class="text1">I am a {{ role.roleName }}</span>
+      </button>
   </div>
 
   <div class="col-auto pr-0 register-label-img">

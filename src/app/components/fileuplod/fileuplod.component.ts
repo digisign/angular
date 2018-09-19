@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { HttpService } from '../../common/http.service';
-// import { AppConstants } from '../../constants/appconstants';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppComponent } from '../../app.component';
-import { ValueTransformer } from '@angular/compiler/src/util';
-
+import { Http } from '@angular/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { environment } from '../../../environments/environment';
+import { AngularFileUploaderComponent } from "angular-file-uploader";
+import { Router } from "@angular/router";
+import { SharedService } from '../../services/shared.service';
 
 
 @Component({
@@ -16,39 +12,52 @@ import { ValueTransformer } from '@angular/compiler/src/util';
   templateUrl: './fileuplod.component.html',
   styleUrls: ['./fileuplod.component.css']
 })
+
 export class FileuplodComponent implements OnInit {
-  UserForm: FormGroup;
-  UserFile: String;
+  status;
+  fileinfo = [];
+  public url = environment.API_ENDPOINT + "files";
+  @ViewChild('fileUpload')
+  private fileUpload: AngularFileUploaderComponent;
 
-  @ViewChild('UserFile') User_File;
+  afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png",
+    maxSize: "1",
+    uploadAPI: {
+      url: this.url
+    },
+    theme: "dragNDrop",
+    hideProgressBar: true,
+    hideResetBtn: true,
+    hideSelectBtn: false
+  };
 
-  constructor(private fb: FormBuilder, public http: Http) {
-    this.UserForm = this.fb.group({ 'UserFile': ['', Validators.required] })
+  constructor(
+    private fb: FormBuilder,
+    public http: Http,
+    private router: Router,
+    private _SharedService: SharedService
+  ) { }
+
+  ngOnInit() { }
 
 
-
+  getFileUploadResponse(res) {
+    if(res.status == 200) {
+      this.status= res.status;
+      JSON.parse(res.response).forEach(element => {
+        this.fileinfo.push({
+          filePath: element.filePath,
+          thumbNailPath: element.thumbNailPath
+        });
+      });
+      this._SharedService.getFileInfo.next(this.fileinfo);
+    }
   }
-  onSubmit(value) {
-    let temp = value.UserFile.split('/');
-    this.UserFile = temp[temp.length - 1].split('.')[0];
 
-    // this.saveFile(value).subscribe(response=>{
-    //console.log(response);
-    // });
+  goTo() {
+    this.router.navigate(['/UploadDetails']);
   }
-  ngOnInit() {
-  }
-
-  // // http post method
-  //private saveFile(file): Observable<any> {
-
-  //console.log(file.UserFile);
-
-  //console.log(localStorage.getItem("currentUser"));
-  // return this.http.post(AppComponent.API_URL+'/uploadFile',file.UserFile);
-
-  //} 
-
-
 }
 

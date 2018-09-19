@@ -7,14 +7,17 @@
 }
 
 .logo {
-  /* display: flex;
-  width: 70px; */
-  height: 164px;
-  /* align-items: center;
-  justify-content: center; */
+  width: 70px;
+  height: 120px;
 }
 
-h3 {
+.social-media-title {
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #8c8c8c;
+}
+
+/* h3 {
   width: 120px;
   height: 43px;
   font-family: Roboto-Regular;
@@ -24,6 +27,13 @@ h3 {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  color: #195add;
+} */
+
+.login-page-titel {
+  font-family: Roboto-Regular;
+  font-size: 36px;
+  font-weight: bold;
   color: #195add;
 }
 
@@ -153,7 +163,10 @@ p {
   color: #ffffff;
   align-items: center;
   justify-content: center;
+}
 
+.signinbtn:focus {
+  outline: none;
 }
 
 .donothave {
@@ -175,6 +188,10 @@ p {
   line-height: normal;
   letter-spacing: 0px;
   color: #195bdd;
+}
+
+.register-box-wrap {
+  min-height: 100%;
 }
 
 .register-box {
@@ -211,10 +228,12 @@ p {
   font-size: 12px;
 }
 
-.ng-unvaild .signinbtn {
+.ng-invalid .signinbtn {
   background-color: #bdbdbd;
+  cursor: not-allowed;
 }
 
 .ng-valid .signinbtn {
   background-color: #195bdd;
+  cursor: pointer;
 }

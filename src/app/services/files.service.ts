@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Rx';
-import {HttpClient, HttpRequest, HttpEvent} from '@angular/common/http';
-import {Http} from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
+
 @Injectable()
 export class FilesService {
+  constructor(public _http: Http) { }
 
-  constructor( public httpClient:HttpClient,public http:Http) { }
-  /*pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    const formdata: FormData = new FormData();
-    formdata.append('file', file);
-    const req = new HttpRequest('POST', 'http://localhost:8085/files', formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    }
-    );
-    return this.http.request(req);
-  }*/
+  upload(files) {
+    const URL = environment.API_ENDPOINT+ "files";
+    const type = 'POST';
+    const body = files;
+    
+    let headers = new Headers({
+      'Content-Type':'multipart/form-data',
+      'Accept':'application/json'
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
+    return this._http.post(URL, body,options )
+    .map(response => response.json())
+    .catch(error => Observable.throw(error));
+  }
 
 }

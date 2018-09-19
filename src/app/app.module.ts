@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FileSelectDirective } from 'ng2-file-upload';
-import { PdfViewerModule } from 'ng2-pdf-viewer'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -41,8 +39,6 @@ import { SharedService } from './services/shared.service';
     HomeComponent,
     MyFileUpload,
     FileuplodComponent,
-    FilepdfComponent,
-    FileSelectDirective,
     CredentialsviewsComponent,
     FilesComponent,
     UploadDetailsComponent,
@@ -54,7 +50,6 @@ import { SharedService } from './services/shared.service';
     FormsModule,
     routing,
     ReactiveFormsModule,
-    PdfViewerModule,
     MatAutocompleteModule,
     MatInputModule,
     BrowserAnimationsModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { UploadDetailsService } from '../../services/upload-details/upload-details.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
@@ -10,7 +10,8 @@ import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-upload-details',
   templateUrl: './upload-details.component.html',
-  styleUrls: ['./upload-details.component.css']
+  styleUrls: ['./upload-details.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UploadDetailsComponent implements OnInit {
   public instituteDetails = [];

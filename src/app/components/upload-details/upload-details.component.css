@@ -70,3 +70,7 @@
 .upload-details-container.valid .form-control {
   background-color: #fff2f6;
 }
+
+.date-picker.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0;
+}

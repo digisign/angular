@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from "./services/auth.service";
-import { HttpModule } from "@angular/http";
-import { AccountService} from "./services/account.service";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { HttpModule } from '@angular/http';
+import { AccountService } from './services/account.service';
 import { ProfileComponent } from './components/profile/profile.component';
-import { routing} from "./app.routing";
-import { UrlPermission } from "./urlPermission/url.permission";
+import { routing } from './app.routing';
+import { UrlPermission } from './urlPermission/url.permission';
+// tslint:disable-next-line:max-line-length
 import { MatAutocompleteModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFileUploaderModule } from "angular-file-uploader";
+import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 import { HomeComponent } from './components/home/home.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
@@ -26,6 +27,7 @@ import { UploadDetailsService } from './services/upload-details/upload-details.s
 import { RolesService } from './services/roles/roles.service';
 import { GetSetSessionDetails } from './utils/getSessionDetails';
 import { SharedService } from './services/shared.service';
+import { HeaderComponent } from './common/header/header.component';
 
 
 
@@ -40,7 +42,8 @@ import { SharedService } from './services/shared.service';
     CredentialsviewsComponent,
     FilesComponent,
     UploadDetailsComponent,
-    CertificateStatusComponent
+    CertificateStatusComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { SharedService } from './services/shared.service';
     MatNativeDateModule,
     AngularFileUploaderModule
   ],
-  providers: [ 
+  providers: [
     AuthService,
     AccountService,
     UrlPermission,

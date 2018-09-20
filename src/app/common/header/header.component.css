@@ -1,0 +1,44 @@
+.navbar-wrap {
+  height: 80px;
+  box-shadow: 0 2px 40px 1px rgba(221, 229, 252, 0.5);
+  background-color: #ffffff;
+  border: solid 1px #f5f4f5;
+}
+
+.navbar-wrap .logo-wrap {
+  width: 180px;
+}
+
+.navbar-wrap .notification-wrap {
+  width: calc(100% - 190px);
+}
+
+.navbar-wrap .notification-wrap .notification-icon {
+  color: #afb5c4;
+  font-size: 30px;
+  position: relative;
+}
+
+.navbar-wrap .notification-wrap .notification-icon .notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #25cdda;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.navbar-wrap .user-icon {
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #979797;
+}

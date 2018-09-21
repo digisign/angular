@@ -46,10 +46,12 @@
         </div>
         <button class="signinbtn" type="submit" [disabled]="!f.form.valid">SIGN IN</button>
         <div class="text-center pt-1 pb-4">
-          <a [routerLink]="['/home']" class="btnregister ">
-            <span class="donothave">Don't have an account?
-              <!-- &nbsp;&nbsp;&nbsp; --><span class="register-link ml-3">REGISTER</span></span>
-          </a>
+          <span class="donothave">Don't have an account?
+            <a [routerLink]="['/home']" class="btnregister ">
+
+              <!-- &nbsp;&nbsp;&nbsp; --><span class="register-link ml-3">REGISTER</span>
+            </a>
+          </span>
         </div>
       </div>
     </form>

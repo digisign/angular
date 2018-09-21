@@ -69,3 +69,30 @@ body {
   background-color: #ffffff;
   border: solid 1px #f5f4f5;
 }
+
+.btn.up_btn.afu-attach-pin {
+  color: #ffffff;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  border: 0px;
+  background-color: #195bdd;
+  border-radius: 15px;
+  height: 30px;
+  max-width: 174px;
+}
+
+.btn.up_btn.afu-attach-pin:hover {
+  color: #fff;
+}
+.btn.up_btn.afu-attach-pin ~ .label-info {
+  display: none;
+}
+
+.afu-attach-pin .fa-paperclip {
+  display: none;
+}

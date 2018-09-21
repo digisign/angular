@@ -4,7 +4,9 @@ import { User } from "../model/model.user";
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   constructor(public http: Http) { }
   public logIn(user: User) {

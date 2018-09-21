@@ -110,5 +110,4 @@ export class AccountService {
     };
     this.userInfoSubject.next(this.userInfo);
   }
-
 }

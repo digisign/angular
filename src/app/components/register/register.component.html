@@ -93,9 +93,11 @@
 
       <button class=" btn-register" type="submit" [disabled]="!f.form.valid">REGISTER</button>
       <div class="pb-2 pt-1 text-center">
-        <a [routerLink]="['/login']">
-          <span class="already-account">Already have an account <span class="signin">Sign In</span></span>
-        </a>
+
+        <span class="already-account">Already have an account <a [routerLink]="['/login']"><span class="signin">Sign
+              In</span></a>
+        </span>
+
       </div>
 
     </form>

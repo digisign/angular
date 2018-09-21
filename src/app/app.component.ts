@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { GetSetSessionDetails } from './utils/getSessionDetails';
+ 
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'Digital Credentials';
-  /* static API_URL="http://localhost:8080"; */
+  userInfo: any;
+  @Output() setuserinfo: EventEmitter<any> = new EventEmitter();
+
+  constructor(
+    private _GetSetSessionDetails: GetSetSessionDetails,
+    private _Router: Router
+  ) {}
+
+  ngOninit() {
+    if(Object.keys(this._GetSetSessionDetails.userInfoDetails()).length == 0) {
+      this._Router.navigate(['home']);
+    } 
+  }
+
 }

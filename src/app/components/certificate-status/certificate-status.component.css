@@ -65,28 +65,6 @@
   max-width: 180px;
 }
 
-.upload-btn-wrap {
-  background-color: #195bdd;
-  border-radius: 15px;
-  height: 30px;
-  max-width: 174px;
-}
-
-.upload-btn-wrap .upload-btn-text {
-  color: #ffffff;
-  font-family: Roboto-Regular;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: normal;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.upload-btn-wrap .upload-btn {
-  position: absolute;
-  opacity: 0;
-}
 
 .certificate-status-wrap {
   min-height: calc(100% - 80px);

@@ -1,10 +1,9 @@
 <div class="w-100 h-100 d-flex align-items-center justify-content-center upload-details-wrap">
   <div class="upload-details-container">
     <!-- valid -->
-
     <form [formGroup]="userDetails" (ngSubmit)="formSubmit(userDetails.value)">
       <h2 class="text-center p-4 m-0 content-title">
-        10th markscard.png
+        {{this.editDetails?.filePath}}
         <span class="float-right modify-button-wrap">
           <a href="javascript:;" class="d-inline-block mx-1 modify-button"><img src="assets/images/edit-icon.png" alt="Edit"></a>
           <a href="javascript:;" class="d-inline-block mx-1 modify-button"><img src="assets/images/delete-icon.png" alt="Delete"></a>
@@ -18,9 +17,10 @@
           <mat-form-field class="form-group example-full-width">
             <input matInput formControlName="degree" placeholder="Please enter degree obtained">
           </mat-form-field>
-          <mat-form-field class="form-group example-full-width">
+          <mat-form-field class="form-group example-full-width" *ngIf="isView">
             <input type="text" matInput formControlName="institute" [matAutocomplete]="auto" placeholder="Please enter institute name">
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onInstitutionChanged($event.option.value)">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onInstitutionChanged($event.option.value)"
+              [displayWith]="displayInstitue.bind(this)">
               <mat-option *ngFor="let item of instituteDetails" [value]="item.institutionName">
                 {{ item.institutionName }}
               </mat-option>
@@ -47,18 +47,17 @@
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
             <div class="d-flex">
-              <input matInput formControlName="startDate" [matDatepicker]="startpicker" placeholder="Start Date">
-              <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
-              <mat-datepicker #startpicker></mat-datepicker>
-              <input matInput formControlName="endDate" [matDatepicker]="endpicker" placeholder="End Date">
-              <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
-              <mat-datepicker #endpicker></mat-datepicker>
-              <small *ngIf="userDetails.hasError('notValid')">Not valid</small>
+              <mat-select placholder="From" formControlName="fromDate" >
+                <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
+              </mat-select>
+              <mat-select placholder="To" formControlName="ToDate" >
+                <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
+              </mat-select>
             </div>
           </mat-form-field>
           <mat-form-field class="form-group example-full-width">
-            <mat-select placholder="year" formControlName="credentailsYear">
-              <mat-option *ngFor="let year of years" value="year">{{year}}</mat-option>
+            <mat-select placholder="Year of Graduation" formControlName="credentailsYear" [(ngModel)]="selectedOption">
+              <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

@@ -1,0 +1,17 @@
+<div class="navbar navbar-expand-lg navbar-light m-0 navbar-wrap" *ngIf="getUserInfo.userName">
+    <div class="col-auto pr-0 logo-wrap"><img src="assets/images/digisign logo 2.png" class="w-100"></div>
+    <div class="col-auto d-inline-flex justify-content-end align-items-center pr-0 notification-wrap">
+      <i class="la la-search mx-3 icons"></i>
+      <i class="la la-bell mx-3 icons">
+        <span class="d-inline-flex align-items-center justify-content-center notification-count">4</span>
+      </i>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--pan class="d-inline-block mx-3 user-icon"></span-->
+      <a href="javascript:;" (click)="logout()">
+        <i class="la la-sign-out icons"></i>
+      </a>
+    </div>
+  </div> 

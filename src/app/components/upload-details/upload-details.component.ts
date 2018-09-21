@@ -1,9 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { UploadDetailsService } from '../../services/upload-details/upload-details.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 import { GetSetSessionDetails } from '../../utils/getSessionDetails';
 import { SharedService } from '../../services/shared.service';
+import { Router, ActivatedRoute } from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 
 
@@ -22,8 +24,8 @@ export class UploadDetailsComponent implements OnInit {
   public institute: FormControl = new FormControl();
   public course: FormControl = new FormControl();
   public grade: FormControl = new FormControl();
-  public startDate: FormControl = new FormControl();
-  public endDate: FormControl = new FormControl();
+  public fromDate: FormControl = new FormControl();
+  public ToDate: FormControl = new FormControl();
   public credentailsYear: FormControl = new FormControl();
   courseId: any;
   institutionId: any;
@@ -34,8 +36,8 @@ export class UploadDetailsComponent implements OnInit {
   file: string;
   thumbNailPath: string;
   statusId: any;
+  itemList: string;
   imageURL: string;
-
   @Output() optionSelected: EventEmitter<MatAutocompleteSelectedEvent>
   userDetails: FormGroup;
   coursesDetails = [];
@@ -43,32 +45,57 @@ export class UploadDetailsComponent implements OnInit {
   userId: any;
   thumbNail: string;
   filePath: string;
+  resourceId: any;
+  listUserDetails = [];
+  editDetails: any;
+  @ViewChild("auto") auto: MatAutocomplete;
+  displayInstitueName: any;
+  displayCourseName: any;
+  tempName: any;
+  isView = false;
+
   constructor(
     private fb: FormBuilder,
     private _UploadDetailsService: UploadDetailsService,
     private _GetSetSessionDetails: GetSetSessionDetails,
-    private _SharedService: SharedService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this._SharedService.getFileInfo.subscribe(response => {
-      this.filePath = response[0].filePath;
-      this.thumbNail = response[0].thumbNailPath;
+    this.userId = this._GetSetSessionDetails.userInfoDetails().userId;
+    this.route.params.subscribe(params => {
+      this.resourceId = params['id'];
     });
-    this.imageURL = "http://172.16.18.173:8080/files?fileName="+ this.thumbNail + "&isThumbNail=" + 1;
+
+    this._UploadDetailsService.fetchALLCredetailResource(this.userId).subscribe(
+      res => {
+        this.listUserDetails = res;
+        const id = this.listUserDetails.findIndex((item) => { return item.resourceId == this.resourceId });
+        this.editDetails = this.listUserDetails[id];
+        console.log(this.editDetails);
+        this.displayInstitueName = this.editDetails.institution ? this.editDetails.institution : '';
+        this.displayCourseName = this.editDetails.course ? this.editDetails.course: '';
+        this.userDetails.patchValue({
+          degree: this.editDetails.credentialName,
+          marks: this.editDetails.marks,
+          selectedOption: this.editDetails.credentialYear
+        });
+        this.imageURL = environment.API_ENDPOINT + 'files?fileName=' + this.editDetails.thumbNailPath + "&isThumbNail=" + 1;
+        this.isView = true;
+      });
+
     this.userDetails = this.fb.group({
       degree: ['', Validators.required],
       course: ['', Validators.required],
       institute: ['', Validators.required],
       marks: ['', Validators.required],
       grade: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      fromDate: ['', Validators.required],
+      ToDate: ['', Validators.required],
       credentailsYear: ['', Validators.required]
-    }, { validator: this.checkDates });
+    });
 
     this.getListofYears();
-    this.userId = this._GetSetSessionDetails.userInfoDetails().userId;
 
     this._UploadDetailsService.getDetails().subscribe(
       res => {
@@ -78,25 +105,37 @@ export class UploadDetailsComponent implements OnInit {
       error => {
         console.log("Not data found");
       });
-    
-      this.userDetails.controls.institute.valueChanges.subscribe(newValue => {
+
+    this.userDetails.controls.institute.valueChanges.subscribe(newValue => {
       this.instituteDetails = this.filterValues(newValue.toLowerCase());
     });
 
     this._UploadDetailsService.getGrades().subscribe(
-      res=> {
+      res => {
         this.grades = res;
       },
       error => {
         console.log("Not data found");
       }
     );
-
   }
+
+  displayInstitue(val) {
+    if (val != undefined && val != '' && val != undefined) {
+      return val;
+    } else if (this.displayInstitueName.institutionName) {
+      this.onInstitutionChanged(this.displayInstitueName.institutionName);
+      return this.displayInstitueName.institutionName;
+    } else {
+      return '';
+    }
+  }
+  
+
 
   formSubmit(formValues) {
     const values = {
-      resourceId: null,
+      resourceId: this.resourceId,
       userId: this.userId,
       marks: formValues.marks,
       courseId: this.courseId,
@@ -111,7 +150,7 @@ export class UploadDetailsComponent implements OnInit {
       statusId: 1
     }
 
-    this._UploadDetailsService.credentialResource(values).subscribe(res => {
+    this._UploadDetailsService.formSubmitCredentialResource(values).subscribe(res => {
       console.log(res);
     });
   }
@@ -124,29 +163,33 @@ export class UploadDetailsComponent implements OnInit {
   getListofYears() {
     const max = new Date().getFullYear();
     const min = max - 20;
-    for(var i=min; i<=max; i++) {
+    for (var i = min; i <= max; i++) {
       this.years.push(i);
     }
   }
 
   // onChange of institute, displaying list of course name
   onInstitutionChanged(institution: string) {
-    this.course.setValue('');
-    this.institutionId = this.instituteDetails.find(element => element.institutionName == institution).institutionId;
-    const id = this.instituteDetails.findIndex((item)=>{return item.institutionName == institution});
-    this.coursesDetails = this.institutesDupliate[id].courses;
+    
+    if(this.editDetails.institution) {
+        console.log("object...."+ this.editDetails);
+        this.userDetails.controls.course.setValue(this.editDetails.course.courseName);
+       this.editDetails={};
+      //this.coursesDetails = this.editDetails.course.courseName;
+    } else {
+      this.userDetails.controls.course.setValue('');
+      this.institutionId = this.instituteDetails.find(element => element.institutionName == institution).institutionId;
+      this.coursesDetails = this.instituteDetails[0].courses;
+      const id = this.instituteDetails.findIndex((item) => { return item.institutionName == institution });
+      this.coursesDetails = this.institutesDupliate[id].courses;
+    }
+    //this.displayInstitueName = {...this.institutesDupliate[id]};
   }
 
   onCourseChanged(course: string) {
     this.courseId = this.coursesDetails.find(element => element.courseName == course).courseId;
   }
 
-  checkDates(group: FormGroup) {
-    if (group.controls.endDate.value < group.controls.startDate.value) {
-      return { notValid: true }
-    }
-    return null;
-  }
 
   // to filter the institute name
   filterValues(search: string) {

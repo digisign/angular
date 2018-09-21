@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { User } from "../../model/model.user";
 import { AuthService } from "../../services/auth.service";
 import { AccountService } from "../../services/account.service";
 import { Router } from "@angular/router";
-import { Http } from '@angular/http';
+import { GetSetSessionDetails } from '../../utils/getSessionDetails';
+import { SharedService } from '../../services/shared.service';
+
 
 
 @Component({
@@ -14,10 +16,13 @@ import { Http } from '@angular/http';
 })
 export class LoginComponent implements OnInit {
 
+  @Output() setuserinfo: EventEmitter<any> = new EventEmitter();
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _AccountService: AccountService
+    private _AccountService: AccountService,
+    private _GetSetSessionDetails: GetSetSessionDetails,
+    private _SharedService: SharedService
   ) { }
 
   user: User = new User();
@@ -34,12 +39,12 @@ export class LoginComponent implements OnInit {
           res => {
             this._AccountService.setUserInfo(res);
             this._AccountService.userInfoSubject.next(this._AccountService.getUserInfo());
+            this._SharedService.getUserInfo.next(this._GetSetSessionDetails.userInfoDetails());
+            this.router.navigate(['/dashboard']);
           });
-        this.router.navigate(['/fileupload']);
       }
     }, err => {
       this.errorMessage = "Enter Valid Username/password";
-    }
-    )
+    });
   }
 }

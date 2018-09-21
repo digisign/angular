@@ -12,7 +12,21 @@ export class UploadDetailsService {
 
   constructor(public http: Http) { }
 
-  credentialResource(values) {
+
+  fetchALLCredetailResource(userId) {
+    const URL = environment.API_ENDPOINT+ 'users/' + userId + '/credentialResource';
+    const type = 'GET';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type}
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
+    return this.http.get(URL, options).map(res => {
+      return res.json();
+    });
+  }
+
+  formSubmitCredentialResource(values) {
     const URL = environment.API_ENDPOINT+ 'credentialResource';
     const body = values;
     const type = 'POST';

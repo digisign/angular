@@ -303,4 +303,8 @@ export class UploadDetailsComponent implements OnInit {
     });
   }
 
+  test() {
+    alert("test");
+  }
+
 }

@@ -9,7 +9,14 @@ import { HttpModule } from "@angular/http";
 import { AccountService} from "./services/account.service";
 import { appRoutes } from "./app.routing";
 import { UrlPermission } from "./urlPermission/url.permission";
-import { MatAutocompleteModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatRadioModule } from '@angular/material';
+import { MatAutocompleteModule, 
+  MatInputModule, 
+  MatSelectModule,
+  MatFormFieldModule, 
+  MatDatepickerModule, 
+  MatNativeDateModule, 
+  MatRadioModule,
+  MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { RouterModule } from '@angular/router';
@@ -69,7 +76,8 @@ import { AlertMessageService } from './services/alert-message/alert-message.serv
     GetSetSessionDetails,
     SharedService,
     LoginComponent,
-    AlertMessageService
+    AlertMessageService,
+    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
   ],
   bootstrap: [
     AppComponent

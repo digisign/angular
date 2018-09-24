@@ -9,14 +9,13 @@ import { HttpModule } from "@angular/http";
 import { AccountService} from "./services/account.service";
 import { appRoutes } from "./app.routing";
 import { UrlPermission } from "./urlPermission/url.permission";
-import { MatAutocompleteModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatAutocompleteModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatRadioModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFileUploaderModule } from "angular-file-uploader";
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { FileuplodComponent } from './components/fileuplod/fileuplod.component';
-import { FilepdfComponent } from './components/filepdf/filepdf.component';
 import { CredentialsviewsComponent } from './components/credentialsviews/credentialsviews.component';
 import { FilesComponent } from './components/files/files.component';
 import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
@@ -55,6 +54,7 @@ import { HeaderComponent } from './common/header/header.component';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
     AngularFileUploaderModule,
     RouterModule.forRoot(appRoutes)
   ],

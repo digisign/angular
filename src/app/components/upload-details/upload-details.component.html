@@ -5,8 +5,9 @@
       <h2 class="text-center p-4 m-0 content-title">
         {{this.editDetails?.filePath}}
         <span class="float-right modify-button-wrap">
-          <a href="javascript:;" class="d-inline-block mx-1 modify-button"><img src="assets/images/edit-icon.png" alt="Edit"></a>
-          <a href="javascript:;" class="d-inline-block mx-1 modify-button"><img src="assets/images/delete-icon.png" alt="Delete"></a>
+          <!--a href="javascript:;" class="d-inline-block mx-1 modify-button" [ngClass]="{'inactive': !isEdit}"><img
+              src="assets/images/edit-icon.png" alt="Edit"></a-->
+          <a href="javascript:;" class="d-inline-block mx-1 modify-button"><i class="la la-trash-o"></i></a>
         </span>
       </h2>
       <div class="d-inline-flex w-100">
@@ -34,39 +35,61 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <mat-form-field class="form-group example-full-width">
-            <input type="text" matInput formControlName="marks" placeholder="Marks obtained">
+          <mat-radio-group formControlName="chooseOption" (change)="radioOptionSelected($event.value)">
+            <mat-radio-button [value]="markType.marksTypeId" *ngFor="let markType of markTypes"  [checked]="marksTypeId == markType.marksTypeId">{{markType.type}}</mat-radio-button>
+          </mat-radio-group>
+          <div class="d-inline-flex" *ngIf="marksTypeId == 1">
+            <mat-form-field class="form-group example-full-width">
+              <input type="text" matInput formControlName="marks" placeholder="Marks obtained">
+            </mat-form-field>
+            <mat-form-field class="form-group example-full-width">
+              <input type="text" matInput formControlName="totalmarks" placeholder="Total Marks">
+            </mat-form-field>
+          </div>
+          <mat-form-field class="form-group example-full-width" *ngIf="marksTypeId == 2">
+            <input type="text" matInput formControlName="grade" placeholder="Grade Secured">
           </mat-form-field>
-          <mat-form-field class="form-group example-full-width">
-            <input type="text" matInput formControlName="grade" [matAutocomplete]="autoGrade" placeholder="Grade Secured">
-            <mat-autocomplete #autoGrade="matAutocomplete" (optionSelected)="getGradeId($event.option.value)">
-              <mat-option *ngFor="let gradeItem of grades" [value]="gradeItem.gradeName">
-                {{ gradeItem.gradeName }}
-              </mat-option>
-            </mat-autocomplete>
+          <div class="d-inline-flex" *ngIf="marksTypeId == 3">
+            <mat-form-field class="form-group example-full-width">
+              <input type="text" matInput formControlName="cgpa" placeholder="Enter CGPA">
+            </mat-form-field>
+            <mat-form-field class="form-group example-full-width">
+              <input type="text" matInput formControlName="totalcgpa" placeholder="Total Marks">
+            </mat-form-field>
+          </div>
+          <mat-form-field class="form-group example-full-width" *ngIf="marksTypeId == 4">
+            <input type="text" matInput formControlName="percentage" placeholder="percentage">
           </mat-form-field>
-          <mat-form-field class="form-group example-full-width">
-            <div class="d-flex">
-              <mat-select placholder="From" formControlName="fromDate" >
-                <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
+          <div class="d-flex">
+            <mat-form-field class="form-group example-full-width">
+              <mat-select placeholder="From" formControlName="fromDate"  [(ngModel)]="selectedfromDate">
+                <mat-option>Select From</mat-option>
+                <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
               </mat-select>
-              <mat-select placholder="To" formControlName="ToDate" >
-                <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
+            </mat-form-field>
+            <mat-form-field class="form-group example-full-width">
+              <mat-select placeholder="To" formControlName="ToDate"  [(ngModel)]="selectedToDate" (selectionChange)="onChangeToYear($event.value)">
+                <mat-option>Select To</mat-option>
+                <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
               </mat-select>
-            </div>
-          </mat-form-field>
+              <mat-error *ngIf="toYearLessThanFrom">Selected Year cannot be less than From Year</mat-error>
+            </mat-form-field>
+          </div>
           <mat-form-field class="form-group example-full-width">
-            <mat-select placholder="Year of Graduation" formControlName="credentailsYear" [(ngModel)]="selectedOption">
-              <mat-option *ngFor="let year of years" value="{{year}}">{{year}}</mat-option>
+            <mat-select placeholder="Year of Graduation" formControlName="credentailsYear" [(ngModel)]="selectedCredentailsYear">
+              <mat-option *ngFor="let year of years" [value]="year" >{{year}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
       <div class="text-center edit-button">
-        <button class="btn submit-button">Save</button>
-      </div>
-      <div class="text-center verification-button d-none">
-        <button class="btn submit-button">Send For Verification</button>
+        {{isEdit}}
+        <button class="btn submit-button" *ngIf="!isEdit; else editButton" [disabled]="!userDetails.valid">Save</button>
+        <ng-template #editButton>
+            <button class="btn submit-button">Update</button>
+        </ng-template>
+        {{isButtonDisabled}}
+        <button class="btn submit-button mx-3" [disabled]="!isButtonDisabled"><span><i class="la la-paper-plane"></i>&nbsp;&nbsp;</span>Send For Verification</button>
       </div>
     </form>
   </div>

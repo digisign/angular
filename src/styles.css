@@ -96,3 +96,8 @@ body {
 .afu-attach-pin .fa-paperclip {
   display: none;
 }
+
+.la-trash-o {
+  font-size: 25px;
+  color: #333;
+}

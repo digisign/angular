@@ -41,7 +41,7 @@ export class CertificateStatusComponent implements OnInit {
     this.afuConfig = {
       multiple: true,
       formatsAllowed: ".jpg,.png,.pdf",
-      maxSize: "1",
+      maxSize: "5",
       uploadAPI: {
         url: this.url
       },

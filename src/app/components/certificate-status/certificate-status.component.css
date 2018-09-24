@@ -87,6 +87,10 @@
   border-bottom: solid 1px rgba(151, 151, 151, 0.2);
 }
 
+.certificate-wrap-header a {
+  display: block;
+}
+
 .certificate-mark {
   font-family: Roboto-Regular;
   font-size: 14px;

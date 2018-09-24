@@ -24,6 +24,7 @@
   border: solid 1px #e3e3e3;
   font-family: Roboto-Regular;
   font-size: 14px;
+  padding: 30px;
 }
 
 .upload-details-container.valid {
@@ -63,10 +64,19 @@
   height: 40px;
 }
 
-.upload-details-container.valid .submit-button {
+.upload-details-container .submit-button {
   background-color: #d43d6d;
+}
+
+.upload-details-container .submit-button:disabled {
+  background-color: #bdbdbd;
 }
 
 .upload-details-container.valid .form-control {
   background-color: #fff2f6;
+}
+
+.inactive {
+  color: #000000;
+  opacity: 0.3;
 }

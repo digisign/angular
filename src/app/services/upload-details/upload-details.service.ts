@@ -36,11 +36,24 @@ export class UploadDetailsService {
     });
     const options = new RequestOptions({ headers: headers, withCredentials: false });
     return this.http.post(URL, body, options).map(res => {
+      return res;
+    });
+  }
+
+  getMarksType() {
+    const URL = environment.API_ENDPOINT+ 'markTypes';
+    const type = 'GET';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'params': { URL, _type: type}
+    });
+    const options = new RequestOptions({ headers: headers, withCredentials: false });
+    return this.http.get(URL, options).map(res => {
       return res.json();
     });
   }
 
-  getDetails() {
+  getInstitutionDetails() {
     const URL = environment.API_ENDPOINT+ 'institution';
     const type = 'GET';
     const headers = new Headers({

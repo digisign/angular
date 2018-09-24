@@ -62,7 +62,7 @@ export class UploadDetailsService {
     });
     const options = new RequestOptions({ headers: headers, withCredentials: false });
     return this.http.get(URL, options).map(res => {
-      return res.json();
+      return res;
     });
   }
 

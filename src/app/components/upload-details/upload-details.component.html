@@ -83,12 +83,10 @@
         </div>
       </div>
       <div class="text-center edit-button">
-        {{isEdit}}
         <button class="btn submit-button" *ngIf="!isEdit; else editButton" [disabled]="!userDetails.valid">Save</button>
         <ng-template #editButton>
             <button class="btn submit-button">Update</button>
         </ng-template>
-        {{isButtonDisabled}}
         <button class="btn submit-button mx-3" [disabled]="!isButtonDisabled"><span><i class="la la-paper-plane"></i>&nbsp;&nbsp;</span>Send For Verification</button>
       </div>
     </form>

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { GetSetSessionDetails } from '../../utils/getSessionDetails';
 import { subscribeOn } from 'rxjs/operators';
 import { UploadDetailsService } from '../../services/upload-details/upload-details.service';
+import { AlertMessageService } from '../../services/alert-message/alert-message.service';
 
 
 
@@ -30,7 +31,8 @@ export class CertificateStatusComponent implements OnInit {
   constructor(
     private router: Router,
     private _GetSetSessionDetails: GetSetSessionDetails,
-    private _UploadDetailsService: UploadDetailsService
+    private _UploadDetailsService: UploadDetailsService,
+    private _AlertMessageService: AlertMessageService
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,10 @@ export class CertificateStatusComponent implements OnInit {
     if (res.status == 200) {
       this.status = res.status;
       this.getDocumentList(this.userId);
+    }
+
+    if (res.status < 200 || res.status >= 300) {
+      this._AlertMessageService.sendMessage("Something went wrong!!!", res.status, "Error");
     }
   }
 

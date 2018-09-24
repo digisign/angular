@@ -101,3 +101,28 @@ body {
   font-size: 25px;
   color: #333;
 }
+
+.alert {
+  display: flex;
+  position: fixed;
+  padding: 10px 35px 10px 15px;
+  top: 50%;
+  left: 50%;
+  min-height: 45px;
+  min-width: 320px;
+  justify-content: left;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.close-alert {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 14px;
+  padding: 0;
+}

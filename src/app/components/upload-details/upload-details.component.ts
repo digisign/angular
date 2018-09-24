@@ -5,7 +5,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete, MatRadioChange, MatSelec
 import { GetSetSessionDetails } from '../../utils/getSessionDetails';
 import { ActivatedRoute } from "@angular/router";
 import { environment } from '../../../environments/environment';
-
+import { AlertMessageService } from '../../services/alert-message/alert-message.service';
 
 
 @Component({
@@ -73,7 +73,8 @@ export class UploadDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private _UploadDetailsService: UploadDetailsService,
     private _GetSetSessionDetails: GetSetSessionDetails,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _AlertMessageService: AlertMessageService
   ) { }
 
   ngOnInit() {
@@ -163,14 +164,16 @@ export class UploadDetailsComponent implements OnInit {
 
     this._UploadDetailsService.getInstitutionDetails().subscribe(
       res => {
-        let response = res.filter(element => {
+        let response = res.json().filter(element => {
           return element.institutionName != null;
         });
         this.instituteDetails = response;
         this.institutesDupliate = response;
       },
       error => {
-        console.log("Not data found");
+        if (error.status < 200 || error.status >= 300) {
+          this._AlertMessageService.sendMessage("Something went wrong!!!", error.status, "Error");
+        }
       });
 
     this.userDetails.controls.institute.valueChanges.subscribe(newValue => {
@@ -237,8 +240,14 @@ export class UploadDetailsComponent implements OnInit {
     }
     this._UploadDetailsService.formSubmitCredentialResource(values).subscribe(res => {
       if (res.status === 200) {
+        this._AlertMessageService.sendMessage("Data is saved successfully", res.status, "Success");
         this.isEdit = true;
         this.isButtonDisabled = true;
+      }
+    },
+    error => {
+      if (error.status < 200 || error.status >= 300) {
+        this._AlertMessageService.sendMessage("Something went wrong!!!", error.status, "Error");
       }
     });
   }

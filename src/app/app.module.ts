@@ -26,7 +26,8 @@ import { RolesService } from './services/roles/roles.service';
 import { GetSetSessionDetails } from './utils/getSessionDetails';
 import { SharedService } from './services/shared.service';
 import { HeaderComponent } from './common/header/header.component';
-
+import { AlertMessageService } from './services/alert-message/alert-message.service';
+ 
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { HeaderComponent } from './common/header/header.component';
     RolesService,
     GetSetSessionDetails,
     SharedService,
-    LoginComponent
+    LoginComponent,
+    AlertMessageService
   ],
   bootstrap: [
     AppComponent

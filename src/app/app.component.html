@@ -1,3 +1,7 @@
+<div class="alert" [ngClass]="{'alert-success': message.type === 'Success' || message.type === 'Update' || message.type === 'Delete', 'alert-danger': message.type === 'Error'}"
+    *ngIf="message">{{message.text}}
+    <!--i class="glyphicon glyphicon-remove close-alert" (click)="clearMessage()"></i-->
+  </div>
 <app-header></app-header>
 <router-outlet></router-outlet>
 
